@@ -1,0 +1,144 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: template infrastructure frontend
+
+Parameters:
+  Project:
+    Type: String
+  Environment:
+    Type: String
+    AllowedValues:
+      - predev
+      - dev
+      - qa
+      - prod
+  Domain:
+    Type: String
+    Description: domain
+  SubDomain:
+    Type: String
+  AcmCertificateArn:
+    Type: String
+    Description: The ARN of a certificate from AWS Certificate Manager (ACM)
+
+Conditions:
+  IsProd:
+    Fn::Equals: [ !Ref Environment, prod ]
+  IsDev:
+    !Or [ !Equals [ !Ref Environment, predev ], !Equals [ !Ref Environment, dev ] ]
+
+Resources:
+
+  AppBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub "${SubDomain}.${Domain}"
+
+  OriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: Access identity between CloudFront and S3 bucket
+
+  CloudFrontApp:
+    Type: AWS::CloudFront::Distribution
+    DependsOn:
+      - AppBucket
+    Properties:
+      DistributionConfig:
+        Comment: !Join [ '', [ !Ref 'AWS::StackName', ' App CloudFront']]
+        Origins:
+          - Id: !Sub "myS3Origin${Project}"
+            DomainName: !GetAtt AppBucket.DomainName
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${OriginAccessIdentity}
+        Aliases:
+          - !Sub "${SubDomain}.${Domain}"
+        DefaultRootObject: index.html
+        DefaultCacheBehavior:
+          TargetOriginId: !Sub "myS3Origin${Project}"
+          ViewerProtocolPolicy: redirect-to-https
+          ForwardedValues:
+            Headers: []
+            Cookies:
+              Forward: none
+            QueryString: false
+            QueryStringCacheKeys: []
+          MinTTL: 0
+          MaxTTL: 600
+          DefaultTTL: 0
+        ViewerCertificate:
+          AcmCertificateArn: !Sub arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/${AcmCertificateArn}
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2021
+        HttpVersion: http2
+        IPV6Enabled: true
+        Enabled: true
+        CustomErrorResponses:
+          - ErrorCode: 404
+            ResponseCode: 200
+            ErrorCachingMinTTL: 10
+            ResponsePagePath: /index.html
+
+  AppBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref AppBucket
+      PolicyDocument:
+        Id: WebAppBucketPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal:
+              CanonicalUser:
+                Fn::GetAtt: [ OriginAccessIdentity , S3CanonicalUserId ]
+            Action:
+              - 's3:GetObject'
+            Resource:
+              Fn::Sub:
+                - arn:aws:s3:::${AppBucket}/*
+                - { AppBucket: !Ref AppBucket }
+          - Sid: AllowAccessToUser
+            Effect: Allow
+            Principal:
+              AWS:
+               - !Sub "arn:aws:iam::${AWS::AccountId}:user/_srv_jenkins"
+               - Fn::If: [IsDev, !Sub "arn:aws:iam::${AWS::AccountId}:user/_srv_dev_deploy", !Ref AWS::NoValue ]
+               - Fn::If: [IsDev, !Sub "arn:aws:iam::${AWS::AccountId}:user/_srv_jenkins_desa", !Ref AWS::NoValue ]
+            Action:
+              - s3:GetObject
+              - s3:PutObject
+            Resource:
+              Fn::Sub:
+                - arn:aws:s3:::${AppBucket}/*
+                - { AppBucket: !Ref AppBucket }
+
+  AppHost:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Comment: !Sub 'Frontend ${Project} ${Domain}'
+      Name: !Sub '${SubDomain}.${Domain}'
+      HostedZoneName: !Sub '${Domain}.'
+      ResourceRecords:
+        - !GetAtt CloudFrontApp.DomainName
+      TTL: "300"
+      Type: CNAME
+
+Outputs:
+  AppURLOutput:
+    Description: URL de MC-custodia-backoffice
+    Value: !Sub 'https://${AppHost}'
+
+  CloudFrontURLOutput:
+    Description: CloudFront URL
+    Value: !Sub 'https://${CloudFrontApp.DomainName}'
+    Export:
+      Name: !Join [ "-", [ !Ref Environment, !Ref Project, CloudFrontURLOutput ] ]
+
+  CloudFrontDistributionOutput:
+    Value: !Ref CloudFrontApp
+    Description: CloudFront Distribution OBD
+    Export:
+      Name: !Join [ "-", [ !Ref Environment, !Ref Project, CloudFrontDistributionOutput ] ]

@@ -1,0 +1,34 @@
+$width-nd: 375px;
+$width-base: 235px;
+
+.date-range {
+  &__base {
+    width: $width-base;
+    .rdrMonth {
+      width: $width-base;
+      padding-bottom: 0px;
+      &AndYear {
+        &Pickers {
+          justify-content: space-around;
+        }
+        &Wrapper {
+          width: $width-base;
+          > button {
+            margin: 0px;
+          }
+        }
+      }
+    }
+  }
+  &__nd {
+    width: $width-nd;
+    .rdrMonth {
+      width: $width-nd;
+      &AndYear {
+        &Wrapper {
+          width: $width-nd;
+        }
+      }
+    }
+  }
+}

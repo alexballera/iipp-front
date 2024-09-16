@@ -1,0 +1,105 @@
+html,
+body {
+  min-height: 100%;
+}
+
+#__next {
+  height: 100%;
+}
+
+#text {
+  display: none;
+}
+
+code {
+  font-family:
+    'Ubuntu',
+    'Inter',
+    sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue';
+  padding: 0.1rem 0.4rem;
+  font-size: 90%;
+  color: #d400ff;
+  border-radius: 0.1335rem;
+}
+code:not([class*='language-']):before,
+code:not([class*='language-']):after {
+  content: '`';
+}
+code[class*='language-'] {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  width: 100%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.base-date-range {
+  width: 240px !important;
+  
+  .rdrMonthAndYearWrapper {
+    width: 240px !important;
+    
+    > button {
+      margin: 0px !important;
+    }
+  }
+  
+  .rdrMonth {
+    width: 240px !important;
+  }
+}
+
+.date-range-dark {
+  .rdrDateDisplayWrapper {
+    background-color: #3D3759;
+  }
+  
+  .rdrDateDisplayItem {
+    background-color: #28243D;
+  }
+  
+  .rdrMonthAndYearWrapper {
+    background-color: #3D3759;
+  }
+  
+  .rdrMonthAndYearPickers {
+    select {
+      color: #817C98;
+    }
+  }
+  
+  .rdrNextPrevButton {
+    background-color: #3D3759 !important;
+  }
+  
+  .rdrMonth {
+    background-color: #3D3759 !important;
+  }
+  
+  .rdrDayDisabled {
+    background-color: #3D3759 !important;
+  }
+}
+
+// Components
+@import 'scss/date_range';
