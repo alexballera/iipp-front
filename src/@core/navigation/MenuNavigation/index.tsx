@@ -6,6 +6,7 @@ import {
   COBRANZAS_ROUTE,
   CONCEPTO_FACTURACION_ROUTE,
   FACTURACION_ROUTE,
+  IIPP_ROUTE,
   IMPUESTOS_ROUTE,
   NOVEDADES_ROUTE,
   OPERACIONES_ROUTE,
@@ -15,6 +16,12 @@ import {
 } from 'src/@core/constants'
 
 export const MenuNavigation = [
+  {
+    title: 'IIPP',
+    icon: NoteTextOutline,
+    show: true,
+    path: `${IIPP_ROUTE}`
+  },
   {
     title: 'Facturación',
     icon: NoteTextOutline,

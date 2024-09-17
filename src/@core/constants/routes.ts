@@ -13,4 +13,5 @@ export const PERFIL_ROUTE = '/perfil'
 export const FACTURACION_ROUTE = '/facturacion'
 export const IMPUESTO_ROUTE = '/impuesto'
 export const IMPUESTOS_ROUTE = '/impuestos'
-export const HOME_ROUTE = FACTURACION_ROUTE
+export const IIPP_ROUTE = '/iipp'
+export const HOME_ROUTE = IIPP_ROUTE
