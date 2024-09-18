@@ -351,7 +351,7 @@ function FormClientesPage() {
             type: 'manual',
             message:
               error.data?.error?.message === 'Not Found' ||
-                error.data?.error?.message === 'Bad Request'
+              error.data?.error?.message === 'Bad Request'
                 ? 'Documento no encontrado'
                 : error.data?.error?.message
           })

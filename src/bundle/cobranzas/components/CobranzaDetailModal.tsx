@@ -62,7 +62,10 @@ function CobranzaDetailModal(props: CobranzasDetalleState) {
                 valor={<EstadoComponent estado={data?.estado || ''} />}
               />
               <DatoDetalle nombre='Fecha Alta' valor={formatDate(data?.fecha_alta) || 'Sin dato'} />
-              <DatoDetalle nombre='Monto' valor={monstrarMonto(data?.monto, data?.moneda as MonedaEnum) || 'Sin dato'} />
+              <DatoDetalle
+                nombre='Monto'
+                valor={monstrarMonto(data?.monto, data?.moneda as MonedaEnum) || 'Sin dato'}
+              />
             </Box>
           </CardContent>
         </Paper>

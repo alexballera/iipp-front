@@ -413,9 +413,7 @@ function NotasFiltrosComponent({ queryParams, setQueryParams }: NotaFiltrosProps
                   color: settings.mode === 'dark' ? 'currentColor' : 'rgba(58, 53, 65, 0.87)'
                 }}
                 dateRangeClassName={
-                  settings.mode === 'dark'
-                    ? 'date-range__base date-range-dark'
-                    : 'date-range__base'
+                  settings.mode === 'dark' ? 'date-range__base date-range-dark' : 'date-range__base'
                 }
                 handleConfirmarFechas={handleConfirmarFechas}
               />

@@ -97,10 +97,10 @@ export function formatearCantidadDecimales(
 }
 
 export function formatearMonto(monto: number, moneda: MonedaEnum): string {
-  const formato = new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: moneda,
-  });
+  const formato = new Intl.NumberFormat('es-AR', {
+    style: 'currency',
+    currency: moneda
+  })
 
   return formato.format(monto)
 }

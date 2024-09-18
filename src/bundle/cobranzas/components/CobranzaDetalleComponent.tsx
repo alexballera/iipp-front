@@ -103,7 +103,10 @@ function CobranzaDetalleComponent() {
           )}
           {cobranza.monto ? (
             <Grid item xs={12} sm={3}>
-              <ShowDataLabel label='Monto' data={mostrarMonto(cobranza.monto, cobranza.moneda as MonedaEnum)} />
+              <ShowDataLabel
+                label='Monto'
+                data={mostrarMonto(cobranza.monto, cobranza.moneda as MonedaEnum)}
+              />
             </Grid>
           ) : (
             <></>
@@ -141,7 +144,10 @@ function CobranzaDetalleComponent() {
           )}
           {cobranza.monto_aplicado ? (
             <Grid item xs={12} sm={3}>
-              <ShowDataLabel label='Monto Aplicado' data={mostrarMonto(cobranza.monto_aplicado, cobranza.moneda as MonedaEnum)} />
+              <ShowDataLabel
+                label='Monto Aplicado'
+                data={mostrarMonto(cobranza.monto_aplicado, cobranza.moneda as MonedaEnum)}
+              />
             </Grid>
           ) : (
             <></>

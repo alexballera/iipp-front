@@ -53,9 +53,9 @@ const DateRangeComponent = ({
   size,
   sx,
   dateRangeClassName,
-  handleConfirmarFechas,
+  handleConfirmarFechas
 }: DRComponentTypes) => {
-  const theme = useTheme();
+  const theme = useTheme()
   const colors = ['rgba(58, 53, 65, 0.7)', primaryColor, secondaryColor, warningColor, errorColor]
 
   const CustomButton = styled(Button)<ButtonProps>(() => ({
@@ -94,7 +94,7 @@ const DateRangeComponent = ({
           position: 'absolute',
           zIndex: 1000,
           top: top,
-          backgroundColor: theme.palette.mode === 'dark' ? '#3D3759' : 'white', 
+          backgroundColor: theme.palette.mode === 'dark' ? '#3D3759' : 'white',
           borderRadius: 8
         }}
       >

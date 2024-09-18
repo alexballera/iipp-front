@@ -7,6 +7,7 @@ const Navigation = (): VerticalNavItemsType => {
       title: item.title,
       icon: item.icon,
       path: item.path,
+      show: item.show,
       children: item.children
     }
   })

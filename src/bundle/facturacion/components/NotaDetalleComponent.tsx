@@ -44,9 +44,15 @@ function NotaDetalleComponent(props: NotaDetalleState) {
             <DatoDetalle nombre='Nombre' valor={data?.cliente?.nombre || 'Sin dato'} />
             <DatoDetalle
               nombre='Documento'
-              valor={`${data?.cliente?.numero_documento![0].tipo} ${data?.cliente?.numero_documento![0].valor}` || 'Sin dato'}
+              valor={
+                `${data?.cliente?.numero_documento![0].tipo} ${data?.cliente?.numero_documento![0].valor}` ||
+                'Sin dato'
+              }
             />
-            <DatoDetalle nombre='Monto' valor={mostrarMonto(data?.monto, data?.moneda as MonedaEnum) || 'Sin dato'} />
+            <DatoDetalle
+              nombre='Monto'
+              valor={mostrarMonto(data?.monto, data?.moneda as MonedaEnum) || 'Sin dato'}
+            />
             <DatoDetalle nombre='Producto' valor={data?.producto || 'Sin dato'} />
             {data?.nota_credito || data?.nota_debito ? (
               <DatoDetalle

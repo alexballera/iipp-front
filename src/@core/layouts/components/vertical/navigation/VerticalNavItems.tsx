@@ -37,7 +37,7 @@ const VerticalNavItems = (props: Props) => {
     (item: NavGroup | NavLink | NavSectionTitle, index: number) => {
       const TagName: any = resolveNavItemComponent(item)
 
-      return <TagName {...props} key={index} item={item} />
+      return item.show && <TagName {...props} key={index} item={item} />
     }
   )
 
