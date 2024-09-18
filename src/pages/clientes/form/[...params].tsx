@@ -25,12 +25,12 @@ import {
   showApiSuccessMessage,
   showMessageError
 } from 'src/@core/utils'
-import useClientesHook from 'src/bundle/parametrias/clientes/components/useClientesHook'
+import useClientesHook from 'src/bundle/clientes/components/useClientesHook'
 import {
   getClienteByDocumentNumber,
   useCreateClienteMutation,
   useUpdateClienteMutation
-} from 'src/bundle/parametrias/clientes/data/clientesApiService'
+} from 'src/bundle/clientes/data/clientesApiService'
 
 //** Customs Components Imports */
 import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
@@ -38,13 +38,13 @@ import ButtonsActionsForm from 'src/@core/components/ButtonsActionsForm'
 import { DateRangeIS, DateRangeTypes } from 'src/@core/components/DateRangeComponent'
 import FormLayout from 'src/@core/layouts/FormLayout'
 import MultipartUpload from 'src/@core/lib/MultipartUpload'
-import ClienteArchivoForm from 'src/bundle/parametrias/clientes/components/form/ClienteArchivoForm'
-import ClienteContactoForm from 'src/bundle/parametrias/clientes/components/form/ClienteContactoForm'
-import ClienteCuentaForm from 'src/bundle/parametrias/clientes/components/form/ClienteCuentaForm'
-import ClienteDireccionForm from 'src/bundle/parametrias/clientes/components/form/ClienteDireccionForm'
-import ClienteImpuestosForm from 'src/bundle/parametrias/clientes/components/form/ClienteImpuestosForm'
-import ClienteProductosForm from 'src/bundle/parametrias/clientes/components/form/ClienteProductosForm'
-import ClienteTipoForm from 'src/bundle/parametrias/clientes/components/form/ClienteTipoForm'
+import ClienteArchivoForm from 'src/bundle/clientes/components/form/ClienteArchivoForm'
+import ClienteContactoForm from 'src/bundle/clientes/components/form/ClienteContactoForm'
+import ClienteCuentaForm from 'src/bundle/clientes/components/form/ClienteCuentaForm'
+import ClienteDireccionForm from 'src/bundle/clientes/components/form/ClienteDireccionForm'
+import ClienteImpuestosForm from 'src/bundle/clientes/components/form/ClienteImpuestosForm'
+import ClienteProductosForm from 'src/bundle/clientes/components/form/ClienteProductosForm'
+import ClienteTipoForm from 'src/bundle/clientes/components/form/ClienteTipoForm'
 import {
   ClienteDTO,
   ClienteDatosExterno,
@@ -52,7 +52,7 @@ import {
   ImpuestoTypesIS,
   ProductosEnum,
   clienteIS
-} from 'src/bundle/parametrias/clientes/domain/clientesModel'
+} from 'src/bundle/clientes/domain/clientesModel'
 import { Archivo, ImpuestoTypes } from 'src/bundle/shared/domain'
 
 const schema = yup.object().shape({

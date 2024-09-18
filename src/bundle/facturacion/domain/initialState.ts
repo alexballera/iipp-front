@@ -1,4 +1,4 @@
-import { SumarioClienteIS } from 'src/bundle/parametrias/clientes/domain/clientesModel'
+import { SumarioClienteIS } from 'src/bundle/clientes/domain/clientesModel'
 import { TipoDeProducto } from 'src/bundle/parametrias/productos/domain/productosModel'
 import { GenerarNotaDTO, NotaDTO, NotaFiltrosDTO, TipoNota } from './facturacionModel'
 

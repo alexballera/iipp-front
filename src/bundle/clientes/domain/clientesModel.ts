@@ -18,7 +18,7 @@ import {
   MonedaEnum,
   order
 } from 'src/bundle/shared/domain'
-import { SumarioConceptoFacturacionDTO } from '../../concepto-facturacion/domain/conceptoFacturacionModel'
+import { SumarioConceptoFacturacionDTO } from '../../parametrias/concepto-facturacion/domain/conceptoFacturacionModel'
 
 export type DataGridPercepcionesProps = {
   percepciones: ImpuestoTypes[]

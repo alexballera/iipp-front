@@ -5,10 +5,10 @@ import type { TypedUseSelectorHook } from 'react-redux'
 import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux'
 
 //** APIs */
+import { clientesApi } from 'src/bundle/clientes/data/clientesApiService'
 import { cobranzasApi } from 'src/bundle/cobranzas/data/cobranzasApiService'
 import { facturacionApi } from 'src/bundle/facturacion/data/facturacionApiService'
 import { novedadesApi } from 'src/bundle/novedades/data/novedadesApiService'
-import { clientesApi } from 'src/bundle/parametrias/clientes/data/clientesApiService'
 import { conceptoFacturacionApi } from 'src/bundle/parametrias/concepto-facturacion/data/conceptoFacturacionApiService'
 import { impuestosApi } from 'src/bundle/parametrias/impuestos/data/impuestosApiService'
 import { operacionApi } from 'src/bundle/parametrias/operaciones/data/operacionesApiService'
@@ -18,10 +18,10 @@ import { descargaArchivoApi } from 'src/bundle/shared/data/descargarArchivoApiSe
 import { userApi } from 'src/bundle/user/data/userApiService'
 
 //** Store Slices */'
+import CLIENTES from 'src/bundle/clientes/data/clientesStore'
 import COBRANZAS from 'src/bundle/cobranzas/data/cobranzaStore'
 import FACTURACION from 'src/bundle/facturacion/data/facturacionStore'
 import NOVEDADES from 'src/bundle/novedades/data/novedadesStore'
-import CLIENTES from 'src/bundle/parametrias/clientes/data/clientesStore'
 import CONCEPTO_FACTURACION from 'src/bundle/parametrias/concepto-facturacion/data/conceptoFacturacionStore'
 import IMPUESTOS from 'src/bundle/parametrias/impuestos/data/impuestosStore'
 import OPERACIONES from 'src/bundle/parametrias/operaciones/data/operacionesStore'

@@ -5,23 +5,17 @@ import { Suspense, memo, useEffect, useState } from 'react'
 import { Grid } from '@mui/material'
 
 // ** Custom Components Imports
+import { FolderCogOutline } from 'mdi-material-ui'
+import HeaderComponent from 'src/@core/components/HeaderComponent'
 import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
-import { ElasticSearchDataIS, PaginationData, PaginationDataIS, QueryParams } from 'src/@core/types'
-import ClientesView from '../../../bundle/parametrias/clientes/components/ClientesView'
-import { useFetchClientesQuery } from '../../../bundle/parametrias/clientes/data/clientesApiService'
-import {
-  setClientesElasticSearch,
-  setClientesList
-} from '../../../bundle/parametrias/clientes/data/clientesStore'
 import { useAppContext } from 'src/@core/context/AppContext'
-import HeaderComponent from 'src/@core/components/HeaderComponent'
-import { FolderCogOutline } from 'mdi-material-ui'
-import {
-  ClienteFiltrosDTO,
-  ClientesFiltrosIS
-} from 'src/bundle/parametrias/clientes/domain/clientesModel'
-import ClientesFiltrosComponent from 'src/bundle/parametrias/clientes/components/ClientesFiltrosComponent'
+import { ElasticSearchDataIS, PaginationData, PaginationDataIS, QueryParams } from 'src/@core/types'
+import ClientesFiltrosComponent from 'src/bundle/clientes/components/ClientesFiltrosComponent'
+import ClientesView from 'src/bundle/clientes/components/ClientesView'
+import { useFetchClientesQuery } from 'src/bundle/clientes/data/clientesApiService'
+import { setClientesElasticSearch, setClientesList } from 'src/bundle/clientes/data/clientesStore'
+import { ClienteFiltrosDTO, ClientesFiltrosIS } from 'src/bundle/clientes/domain/clientesModel'
 
 function ClientesPage() {
   const [paginationData, setPaginationData] = useState<PaginationData>(PaginationDataIS)

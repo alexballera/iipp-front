@@ -13,25 +13,25 @@ import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
 import ErrorMessageBackButton from 'src/@core/components/ErrorMessageBackButton'
 import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
+import DataGridParametrias from 'src/bundle/clientes/components/DataGridParametrias'
+import { useGetClienteByIdQuery } from 'src/bundle/clientes/data/clientesApiService'
+import { setCliente } from 'src/bundle/clientes/data/clientesStore'
 import DirectionComponent from 'src/bundle/facturacion/components/DireccionComponent'
-import DataGridParametrias from 'src/bundle/parametrias/clientes/components/DataGridParametrias'
-import { useGetClienteByIdQuery } from 'src/bundle/parametrias/clientes/data/clientesApiService'
-import { setCliente } from 'src/bundle/parametrias/clientes/data/clientesStore'
 
 import TableSelection from 'src/@core/components/TableSelection'
-import ClienteDetailView from 'src/bundle/parametrias/clientes/components/ClienteDetailView'
-import DataGridArchivos from 'src/bundle/parametrias/clientes/components/DataGridArchivos'
+import ClienteDetailView from 'src/bundle/clientes/components/ClienteDetailView'
+import DataGridArchivos from 'src/bundle/clientes/components/DataGridArchivos'
 import {
   columnsCorreos,
   columnsDocumentos,
   columnsImpuestos
-} from 'src/bundle/parametrias/clientes/components/columns'
+} from 'src/bundle/clientes/components/columns'
 import {
   DataGridCorreosProps,
   DataGridDocumentosProps,
   DataGridImpuestosProps,
   DataGridPercepcionesProps
-} from 'src/bundle/parametrias/clientes/domain/clientesModel'
+} from 'src/bundle/clientes/domain/clientesModel'
 
 function ClientesDetailPage() {
   //** Hooks */

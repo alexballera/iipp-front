@@ -1,6 +1,6 @@
 import { DetalleStateComponent, FiltrosProps } from 'src/@core/types'
+import { SumarioClienteDTO } from 'src/bundle/clientes/domain/clientesModel'
 import { SumarioCobranzaDTO } from 'src/bundle/cobranzas/domain/cobranzasModel'
-import { SumarioClienteDTO } from 'src/bundle/parametrias/clientes/domain/clientesModel'
 import { TipoDeProducto } from 'src/bundle/parametrias/productos/domain/productosModel'
 import { RangoFechaDTO, filtros, order } from 'src/bundle/shared/domain'
 

@@ -38,13 +38,13 @@ import { useDispatch, useSelector } from 'src/@core/configs/store'
 import {
   useCreateParametriaMutation,
   useUpdateParametriaMutation
-} from 'src/bundle/parametrias/clientes/data/clientesApiService'
+} from 'src/bundle/clientes/data/clientesApiService'
 import {
   AplicacionParametria,
   CrearParametriaComercialDTO,
   ModificarParametriaComercialDTO,
   parametriaIS as defaultValues
-} from 'src/bundle/parametrias/clientes/domain/clientesModel'
+} from 'src/bundle/clientes/domain/clientesModel'
 
 // ** Custom Components
 import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
