@@ -11,19 +11,19 @@ import {
   ModificarClienteDTO,
   ModificarParametriaComercialDTO,
   ParametriaComercialDTO
-} from '../domain/clientesModel'
+} from '../domain/iippModel'
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}${APP_ROUTE}`
 
 //** RTK API */
-export const clientesApi = createApi({
-  reducerPath: 'clientesApi',
+export const iippApi = createApi({
+  reducerPath: 'iippApi',
   baseQuery: fetchBaseQuery(setBaseQuery(URL)),
   refetchOnMountOrArgChange: true,
   tagTypes: ['clientes'],
   endpoints: builder => ({
     // List
-    fetchClientes: builder.query<ElasticSearchData<ClienteDTO>, ObjectQueryParams>({
+    fetchIipp: builder.query<ElasticSearchData<ClienteDTO>, ObjectQueryParams>({
       query: body => {
         return {
           url: '/cliente',
@@ -38,7 +38,7 @@ export const clientesApi = createApi({
     }),
 
     // Get
-    getClienteById: builder.query<ClienteDTO, string>({
+    getIippById: builder.query<ClienteDTO, string>({
       query: id => ({
         url: `/cliente/${id}`,
         method: 'get'
@@ -46,12 +46,12 @@ export const clientesApi = createApi({
     }),
 
     // Create
-    createCliente: builder.mutation<CrearClienteDTO, CrearClienteDTO>({
+    createIipp: builder.mutation<CrearClienteDTO, CrearClienteDTO>({
       query: body => ({ url: '/cliente', method: 'post', body })
     }),
 
     // Update
-    updateCliente: builder.mutation<ModificarClienteDTO, ModificarClienteDTO>({
+    updateIipp: builder.mutation<ModificarClienteDTO, ModificarClienteDTO>({
       query: body => ({
         url: `/cliente/${body?.id}`,
         method: 'put',
@@ -60,7 +60,7 @@ export const clientesApi = createApi({
     }),
 
     // Update
-    disableCliente: builder.mutation<ClienteDTO, ClienteDTO>({
+    disableIipp: builder.mutation<ClienteDTO, ClienteDTO>({
       query: body => ({
         url: `/cliente/${body?.id}/estado`,
         method: 'put',
@@ -69,7 +69,7 @@ export const clientesApi = createApi({
     }),
 
     // GET Oficio by Numero Documneto
-    getClienteByDocumentNumber: builder.query<ClienteDatosExterno, string>({
+    getIippByDocumentNumber: builder.query<ClienteDatosExterno, string>({
       query: numero_documento => ({
         url: `/cliente/datos-completos/${numero_documento}`,
         method: 'get'
@@ -101,25 +101,25 @@ export const clientesApi = createApi({
 })
 
 export const {
-  useFetchClientesQuery,
-  useCreateClienteMutation,
-  useGetClienteByIdQuery,
-  useUpdateClienteMutation,
-  useDisableClienteMutation,
-  useGetClienteByDocumentNumberQuery,
+  useCreateIippMutation,
+  useDisableIippMutation,
+  useFetchIippQuery,
+  useGetIippByDocumentNumberQuery,
+  useGetIippByIdQuery,
   useCreateParametriaMutation,
   useUpdateParametriaMutation,
-  useDeleteParametriaQuery
-} = clientesApi
+  useDeleteParametriaQuery,
+  useUpdateIippMutation
+} = iippApi
 
 export const {
-  fetchClientes,
-  getClienteById,
-  createCliente,
-  updateCliente,
-  disableCliente,
-  getClienteByDocumentNumber,
+  createIipp,
+  disableIipp,
+  fetchIipp,
+  getIippByDocumentNumber,
+  getIippById,
+  updateIipp,
   createParametria,
   updateParametria,
   deleteParametria
-} = clientesApi.endpoints
+} = iippApi.endpoints

@@ -35,13 +35,13 @@ import { useSelector } from 'src/@core/configs/store'
 import {
   useCreateParametriaMutation,
   useUpdateParametriaMutation
-} from 'src/bundle/clientes/data/clientesApiService'
+} from 'src/bundle/iipp/data/iippApiService'
 import {
   AplicacionParametria,
   CrearParametriaComercialDTO,
   ModificarParametriaComercialDTO,
   parametriaIS as defaultValues
-} from 'src/bundle/clientes/domain/clientesModel'
+} from 'src/bundle/iipp/domain/iippModel'
 
 // ** Custom Components
 import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
@@ -70,7 +70,7 @@ function FormParametriasPage() {
   const [editarParametria, { isLoading: isUpdating }] = useUpdateParametriaMutation()
 
   const {
-    CLIENTES: { cliente }
+    IIPP: { iipp }
   } = useSelector(state => state)
 
   //** Hooks */
@@ -88,7 +88,7 @@ function FormParametriasPage() {
 
   useMount(() => {
     if (accion === AccionesEnum.EDITAR_PARAMETRIA && parametria_id) {
-      const parametriaAEditar = cliente?.parametrias?.find(p => p.id === parametria_id)
+      const parametriaAEditar = iipp?.parametrias?.find(p => p.id === parametria_id)
 
       if (parametriaAEditar) reset(parametriaAEditar)
     }
@@ -106,7 +106,7 @@ function FormParametriasPage() {
     })
     crearParametria({
       ...body,
-      cliente_id: cliente.id
+      cliente_id: iipp.id
     })
       .unwrap()
       .then(() => {
@@ -127,7 +127,7 @@ function FormParametriasPage() {
     })
     editarParametria({
       ...dataForm,
-      cliente_id: cliente.id
+      cliente_id: iipp.id
     })
       .unwrap()
       .then(() => {
@@ -156,7 +156,7 @@ function FormParametriasPage() {
   const breadCrumbCrear = [
     {
       id: '01',
-      text: `${cliente.nombre}`,
+      text: `${iipp.nombre}`,
       link: () => router.back()
     },
     {

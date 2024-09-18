@@ -13,7 +13,7 @@ import {
   ClienteDetalleState,
   ClienteStateComponentIS,
   ClientesViewProps
-} from '../domain/clientesModel'
+} from '../domain/iippModel'
 
 // * Customs components
 import CustomTooltip from 'src/@core/components/CustomTooltip'

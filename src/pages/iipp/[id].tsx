@@ -10,12 +10,12 @@ import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
 import ErrorMessageBackButton from 'src/@core/components/ErrorMessageBackButton'
 import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
-import { useGetClienteByIdQuery } from 'src/bundle/clientes/data/clientesApiService'
-import { setCliente } from 'src/bundle/clientes/data/clientesStore'
 
-import ClienteDetailView from 'src/bundle/clientes/components/ClienteDetailView'
+import ClienteDetailView from 'src/bundle/iipp/components/ClienteDetailView'
+import { useGetIippByIdQuery } from 'src/bundle/iipp/data/iippApiService'
+import { setIipp } from 'src/bundle/iipp/data/iippStore'
 
-function ClientesDetailPage() {
+function IippDetailPage() {
   //** Hooks */
   const router = useRouter()
   const dispatch = useDispatch()
@@ -23,12 +23,12 @@ function ClientesDetailPage() {
   let { id } = router.query
   id = id?.toString() || ''
 
-  const { data: cliente, refetch, isLoading, isError } = useGetClienteByIdQuery(id || '')
+  const { data: cliente, refetch, isLoading, isError } = useGetIippByIdQuery(id || '')
 
   //** Effects */
   useEffect(() => {
     if (cliente) {
-      dispatch(setCliente(cliente))
+      dispatch(setIipp(cliente))
     }
   }, [dispatch, cliente])
 
@@ -67,4 +67,4 @@ function ClientesDetailPage() {
   )
 }
 
-export default memo(ClientesDetailPage)
+export default memo(IippDetailPage)

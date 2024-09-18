@@ -34,9 +34,9 @@ import {
   showMessageError
 } from 'src/@core/utils'
 import { MenuItemsAccion } from 'src/bundle/shared/domain'
-import { useDisableClienteMutation, useGetClienteByIdQuery } from '../data/clientesApiService'
-import { setCliente } from '../data/clientesStore'
-import { NumeroCuenta, TipoDocumento } from '../domain/clientesModel'
+import { useDisableIippMutation, useGetIippByIdQuery } from '../data/iippApiService'
+import { setIipp } from '../data/iippStore'
+import { NumeroCuenta, TipoDocumento } from '../domain/iippModel'
 
 function ClienteDetailView() {
   const [openModal, setOpenModal] = useState(false)
@@ -52,12 +52,12 @@ function ClienteDetailView() {
     isSuccess,
     refetch,
     isLoading: isLoadingCliente
-  } = useGetClienteByIdQuery(id?.toString() || '')
-  const [disableCliente, { isLoading: isChangingClientState }] = useDisableClienteMutation()
+  } = useGetIippByIdQuery(id?.toString() || '')
+  const [disableCliente, { isLoading: isChangingClientState }] = useDisableIippMutation()
   const { setState, state } = useAppContext()
 
   useEffect(() => {
-    if (isSuccess) dispatch(setCliente(cliente))
+    if (isSuccess) dispatch(setIipp(cliente))
   }, [cliente, dispatch, isSuccess])
 
   const obtenerDocumentoPorJerarquia = (): NumeroCuenta | undefined => {
@@ -299,9 +299,8 @@ function ClienteDetailView() {
               <ModalConfirmacion
                 open={openModal}
                 onClose={() => setOpenModal(false)}
-                title={`CONFIRMA ${
-                  cliente?.habilitado ? 'DESHABILITAR' : 'HABILITAR'
-                } ${cliente?.nombre?.toUpperCase()}`}
+                title={`CONFIRMA ${cliente?.habilitado ? 'DESHABILITAR' : 'HABILITAR'
+                  } ${cliente?.nombre?.toUpperCase()}`}
                 onClick={handleDeshabilitarCliente}
                 loading={isChangingClientState}
               />

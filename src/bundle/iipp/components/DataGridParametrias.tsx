@@ -13,8 +13,8 @@ import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum } from 'src/@core/enums'
 import { FetchErrorTypes } from 'src/@core/types'
 import { formatDate, showApiSuccessMessage, showMessageError } from 'src/@core/utils'
-import { clientesApi } from '../data/clientesApiService'
-import { ParametriaComercialDTO } from '../domain/clientesModel'
+import { iippApi } from '../data/iippApiService'
+import { ParametriaComercialDTO } from '../domain/iippModel'
 
 type DataGridParametriasProps = {
   parametrias: ParametriaComercialDTO[]
@@ -28,7 +28,7 @@ function DataGridParametrias({ parametrias }: DataGridParametriasProps) {
   const [itemSelected, setItemSelected] = useState<GridCellParams>()
   const [idSelected, setIdSelected] = useState<string>('')
   const {
-    CLIENTES: { cliente }
+    IIPP: { iipp }
   } = useSelector((state: RootState) => state)
   const router = useRouter()
   const dispatch = useDispatch()
@@ -124,8 +124,8 @@ function DataGridParametrias({ parametrias }: DataGridParametriasProps) {
     setLoading(true)
 
     const response = dispatch(
-      clientesApi.endpoints.deleteParametria.initiate({
-        cliente_id: cliente.id,
+      iippApi.endpoints.deleteParametria.initiate({
+        cliente_id: iipp.id,
         id: idSelected
       })
     )
@@ -150,7 +150,7 @@ function DataGridParametrias({ parametrias }: DataGridParametriasProps) {
     })
     const parametria_id = idSelected
     router.push(
-      `${CLIENTES_ROUTE}/parametria//${cliente.id}/${AccionesEnum.EDITAR_PARAMETRIA}/${parametria_id}`
+      `${CLIENTES_ROUTE}/parametria/${iipp.id}/${AccionesEnum.EDITAR_PARAMETRIA}/${parametria_id}`
     )
     handleClose()
   }
@@ -160,7 +160,7 @@ function DataGridParametrias({ parametrias }: DataGridParametriasProps) {
       ...state,
       accion: AccionesEnum.CREAR_PARAMETRIA
     })
-    router.push(`${CLIENTES_ROUTE}/parametria/${cliente.id}/${AccionesEnum.CREAR_PARAMETRIA}`)
+    router.push(`${CLIENTES_ROUTE}/parametria/${iipp.id}/${AccionesEnum.CREAR_PARAMETRIA}`)
   }
 
   const handleCloseModal = () => {

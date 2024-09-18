@@ -11,12 +11,12 @@ import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { ElasticSearchDataIS, PaginationData, PaginationDataIS, QueryParams } from 'src/@core/types'
-import ClientesView from 'src/bundle/clientes/components/ClientesView'
-import { useFetchClientesQuery } from 'src/bundle/clientes/data/clientesApiService'
-import { setClientesElasticSearch, setClientesList } from 'src/bundle/clientes/data/clientesStore'
-import { ClienteFiltrosDTO, ClientesFiltrosIS } from 'src/bundle/clientes/domain/clientesModel'
+import ClientesView from 'src/bundle/iipp/components/ClientesView'
+import { useFetchIippQuery } from 'src/bundle/iipp/data/iippApiService'
+import { setIippElasticSearch, setIippList } from 'src/bundle/iipp/data/iippStore'
+import { ClienteFiltrosDTO, ClientesFiltrosIS } from 'src/bundle/iipp/domain/iippModel'
 
-function ClientesPage() {
+function IippPage() {
   const [paginationData, setPaginationData] = useState<PaginationData>(PaginationDataIS)
 
   // * Hooks
@@ -26,7 +26,7 @@ function ClientesPage() {
 
   const qp = queryParams as QueryParams
 
-  const { data, isLoading, isFetching, refetch } = useFetchClientesQuery({
+  const { data, isLoading, isFetching, refetch } = useFetchIippQuery({
     queryParams: qp,
     paginationData
   })
@@ -37,8 +37,8 @@ function ClientesPage() {
 
   useEffect(() => {
     if (data) {
-      dispatch(setClientesList(data.registros))
-      dispatch(setClientesElasticSearch(data))
+      dispatch(setIippList(data.registros))
+      dispatch(setIippElasticSearch(data))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
@@ -67,4 +67,4 @@ function ClientesPage() {
   )
 }
 
-export default memo(ClientesPage)
+export default memo(IippPage)

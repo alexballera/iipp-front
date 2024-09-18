@@ -5,19 +5,19 @@ import type { TypedUseSelectorHook } from 'react-redux'
 import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux'
 
 //** APIs */
-import { clientesApi } from 'src/bundle/clientes/data/clientesApiService'
+import { iippApi } from 'src/bundle/iipp/data/iippApiService'
 import { descargaArchivoApi } from 'src/bundle/shared/data/descargarArchivoApiService'
 import { userApi } from 'src/bundle/user/data/userApiService'
 
 //** Store Slices */'
-import CLIENTES from 'src/bundle/clientes/data/clientesStore'
+import IIPP from 'src/bundle/iipp/data/iippStore'
 import USER from 'src/bundle/user/data/userStore'
 
 const reducer = {
   USER,
-  CLIENTES,
+  IIPP,
   [userApi.reducerPath]: userApi.reducer,
-  [clientesApi.reducerPath]: clientesApi.reducer,
+  [iippApi.reducerPath]: iippApi.reducer,
   [descargaArchivoApi.reducerPath]: descargaArchivoApi.reducer
 }
 
@@ -27,7 +27,7 @@ const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false
-    }).concat(userApi.middleware, clientesApi.middleware, descargaArchivoApi.middleware)
+    }).concat(userApi.middleware, iippApi.middleware, descargaArchivoApi.middleware)
 })
 
 setupListeners(store.dispatch)

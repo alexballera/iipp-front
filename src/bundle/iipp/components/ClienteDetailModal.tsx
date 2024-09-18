@@ -6,7 +6,7 @@ import { Box, Button, CardContent, Grid, Paper, Stack } from '@mui/material'
 import { EyeOutline } from 'mdi-material-ui'
 
 // * Store, Types & Hooks Imports
-import { ClienteDetalleState, NumeroCuenta, TipoDocumento } from '../domain/clientesModel'
+import { ClienteDetalleState, NumeroCuenta, TipoDocumento } from '../domain/iippModel'
 
 // * Customs components
 import CustomTooltip from 'src/@core/components/CustomTooltip'

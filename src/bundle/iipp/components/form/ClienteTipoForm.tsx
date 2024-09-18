@@ -16,7 +16,7 @@ import {
 
 // ** Third Party Imports
 import { Controller } from 'react-hook-form'
-import { TipoClienteEnum } from '../../domain/clientesModel'
+import { TipoClienteEnum } from '../../domain/iippModel'
 
 //** Customs Components Imports */
 import TitleSectionForm from 'src/@core/components/TitleSectionForm'

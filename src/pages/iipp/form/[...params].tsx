@@ -18,19 +18,14 @@ import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum, CategoriaArchivoEnum, UbicacionDocumentoEnum } from 'src/@core/enums'
 import { FetchErrorTypes } from 'src/@core/types'
 import {
-  UppercaseWord,
   direccionSchema,
   removeSlashesAndScores,
   showApiErrorMessage,
   showApiSuccessMessage,
-  showMessageError
+  showMessageError,
+  UppercaseWord
 } from 'src/@core/utils'
-import useClientesHook from 'src/bundle/clientes/components/useClientesHook'
-import {
-  getClienteByDocumentNumber,
-  useCreateClienteMutation,
-  useUpdateClienteMutation
-} from 'src/bundle/clientes/data/clientesApiService'
+import useClientesHook from 'src/bundle/iipp/components/useClientesHook'
 
 //** Customs Components Imports */
 import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
@@ -38,21 +33,15 @@ import ButtonsActionsForm from 'src/@core/components/ButtonsActionsForm'
 import { DateRangeIS, DateRangeTypes } from 'src/@core/components/DateRangeComponent'
 import FormLayout from 'src/@core/layouts/FormLayout'
 import MultipartUpload from 'src/@core/lib/MultipartUpload'
-import ClienteArchivoForm from 'src/bundle/clientes/components/form/ClienteArchivoForm'
-import ClienteContactoForm from 'src/bundle/clientes/components/form/ClienteContactoForm'
-import ClienteCuentaForm from 'src/bundle/clientes/components/form/ClienteCuentaForm'
-import ClienteDireccionForm from 'src/bundle/clientes/components/form/ClienteDireccionForm'
-import ClienteImpuestosForm from 'src/bundle/clientes/components/form/ClienteImpuestosForm'
-import ClienteProductosForm from 'src/bundle/clientes/components/form/ClienteProductosForm'
-import ClienteTipoForm from 'src/bundle/clientes/components/form/ClienteTipoForm'
-import {
-  ClienteDTO,
-  ClienteDatosExterno,
-  DireccionIS,
-  ImpuestoTypesIS,
-  ProductosEnum,
-  clienteIS
-} from 'src/bundle/clientes/domain/clientesModel'
+import ClienteArchivoForm from 'src/bundle/iipp/components/form/ClienteArchivoForm'
+import ClienteContactoForm from 'src/bundle/iipp/components/form/ClienteContactoForm'
+import ClienteCuentaForm from 'src/bundle/iipp/components/form/ClienteCuentaForm'
+import ClienteDireccionForm from 'src/bundle/iipp/components/form/ClienteDireccionForm'
+import ClienteImpuestosForm from 'src/bundle/iipp/components/form/ClienteImpuestosForm'
+import ClienteProductosForm from 'src/bundle/iipp/components/form/ClienteProductosForm'
+import ClienteTipoForm from 'src/bundle/iipp/components/form/ClienteTipoForm'
+import { getIippByDocumentNumber, useCreateIippMutation, useUpdateIippMutation } from 'src/bundle/iipp/data/iippApiService'
+import { ClienteDatosExterno, ClienteDTO, clienteIS, DireccionIS, ImpuestoTypesIS, ProductosEnum } from 'src/bundle/iipp/domain/iippModel'
 import { Archivo, ImpuestoTypes } from 'src/bundle/shared/domain'
 
 const schema = yup.object().shape({
@@ -107,8 +96,8 @@ function FormClientesPage() {
   })
   const URL = `${process.env.NEXT_PUBLIC_API_URL}${APP_ROUTE}${ARCHIVO_ROUTE}`
 
-  const [crearCliente, { isLoading: isCreatingCliente }] = useCreateClienteMutation()
-  const [updateCliente, { isLoading: isUpdatingCliente }] = useUpdateClienteMutation()
+  const [crearCliente, { isLoading: isCreatingCliente }] = useCreateIippMutation()
+  const [updateCliente, { isLoading: isUpdatingCliente }] = useUpdateIippMutation()
 
   //** Hooks */
   const router = useRouter()
@@ -133,10 +122,10 @@ function FormClientesPage() {
   })
 
   const {
-    CLIENTES: { cliente }
+    IIPP: { iipp }
   } = useSelector(state => state)
 
-  const { getBreadCrumb } = useClientesHook(appState.accion, cliente?.nombre || '')
+  const { getBreadCrumb } = useClientesHook(appState.accion, iipp?.nombre || '')
 
   const watchArchivo = watch().archivo
   const descripcionArchivo = watch('archivos.0.descripcion') || ''
@@ -146,29 +135,29 @@ function FormClientesPage() {
 
   useEffect(() => {
     if (appState.accion === AccionesEnum.EDITAR_CLIENTE) {
-      reset({ ...cliente })
-      setImpuestos(cliente.impuestos || [])
-      setPercepciones(cliente.percepciones || [])
-      setDocumentos(cliente.numero_documento!.map(doc => doc.valor) || [])
-      setCorreos(cliente.emails || [])
-      if (cliente.archivos) {
-        setArchivos(cliente.archivos)
+      reset({ ...iipp })
+      setImpuestos(iipp.impuestos || [])
+      setPercepciones(iipp.percepciones || [])
+      setDocumentos(iipp.numero_documento!.map(doc => doc.valor) || [])
+      setCorreos(iipp.emails || [])
+      if (iipp.archivos) {
+        setArchivos(iipp.archivos)
       }
     }
     setState(prevState => ({
       ...prevState,
-      isClienteBanco: cliente.cliente_banco || false,
-      fideicomisos: cliente?.productos?.includes(ProductosEnum.FIDEICOMISOS) || false,
-      cedears: cliente?.productos?.includes(ProductosEnum.CEDEARS) || false,
-      custodia: cliente?.productos?.includes(ProductosEnum.CUSTODIA) || false,
-      fondos: cliente?.productos?.includes(ProductosEnum.FONDOS) || false,
+      isClienteBanco: iipp.cliente_banco || false,
+      fideicomisos: iipp?.productos?.includes(ProductosEnum.FIDEICOMISOS) || false,
+      cedears: iipp?.productos?.includes(ProductosEnum.CEDEARS) || false,
+      custodia: iipp?.productos?.includes(ProductosEnum.CUSTODIA) || false,
+      fondos: iipp?.productos?.includes(ProductosEnum.FONDOS) || false,
       loading: false,
       loadingArchivo: false,
       loadingInput: false,
       categoriaArchivo: CategoriaArchivoEnum.CLIENTE_CONSTANCIA_CUIT
     }))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cliente, appState])
+  }, [iipp, appState])
 
   useEffect(() => {
     const subscription = watch((_value, { name }) => {
@@ -269,7 +258,7 @@ function FormClientesPage() {
 
   const onBlurInputDocumento = useCallback(() => {
     if (documento?.length) {
-      const validarDocumentoCliente = dispatch(getClienteByDocumentNumber.initiate(documento))
+      const validarDocumentoCliente = dispatch(getIippByDocumentNumber.initiate(documento))
 
       setState({
         ...state,
@@ -351,7 +340,7 @@ function FormClientesPage() {
             type: 'manual',
             message:
               error.data?.error?.message === 'Not Found' ||
-              error.data?.error?.message === 'Bad Request'
+                error.data?.error?.message === 'Bad Request'
                 ? 'Documento no encontrado'
                 : error.data?.error?.message
           })
@@ -696,7 +685,7 @@ function FormClientesPage() {
             errors={errors}
             loadingInput={state.loadingInput}
             setCorreos={setCorreos}
-            correos={cliente.emails || []}
+            correos={iipp.emails || []}
           />
 
           <ClienteDireccionForm
