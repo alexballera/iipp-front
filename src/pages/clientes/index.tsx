@@ -11,7 +11,6 @@ import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { ElasticSearchDataIS, PaginationData, PaginationDataIS, QueryParams } from 'src/@core/types'
-import ClientesFiltrosComponent from 'src/bundle/clientes/components/ClientesFiltrosComponent'
 import ClientesView from 'src/bundle/clientes/components/ClientesView'
 import { useFetchClientesQuery } from 'src/bundle/clientes/data/clientesApiService'
 import { setClientesElasticSearch, setClientesList } from 'src/bundle/clientes/data/clientesStore'
@@ -23,7 +22,7 @@ function ClientesPage() {
   // * Hooks
   const dispatch = useDispatch()
   const { loading, setLoading } = useAppContext()
-  const [queryParams, setQueryParams] = useState<ClienteFiltrosDTO>(ClientesFiltrosIS)
+  const [queryParams] = useState<ClienteFiltrosDTO>(ClientesFiltrosIS)
 
   const qp = queryParams as QueryParams
 
@@ -53,7 +52,6 @@ function ClientesPage() {
             textoPrincipal='Parametrías'
             textoSecundario=''
           />
-          <ClientesFiltrosComponent queryParams={queryParams} setQueryParams={setQueryParams} />
           <ClientesView
             data={data || ElasticSearchDataIS}
             isLoading={loading}

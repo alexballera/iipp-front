@@ -3,13 +3,12 @@ import { useRouter } from 'next/router'
 import { memo, useEffect, useState } from 'react'
 
 //** MUI Imports */
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import { Breadcrumbs, Typography } from '@mui/material'
-import { AccountTie, FolderCogOutline, NoteTextOutline } from 'mdi-material-ui'
+import { AccountTie } from 'mdi-material-ui'
 
 //** Context, Enums && Utils Imports */
-import { COBRANZAS_ROUTE, FACTURACION_ROUTE, SALDOS_CLIENTES_ROUTE } from 'src/@core/constants'
+import { CLIENTES_ROUTE } from 'src/@core/constants'
 import { AccionesEnum } from 'src/@core/enums'
 import { removeSlashesAndScores } from 'src/@core/utils'
 
@@ -38,41 +37,18 @@ const BreadcrumbsComponent = ({ breadCrumbItems }: TypesProps) => {
 
   const getIcon = () => {
     if (path[0] === 'clientes') return <AccountTie fontSize='small' />
-    if (path[0] === 'parametrias') return <FolderCogOutline fontSize='small' />
-    if (path[0] === 'cobranzas') return <NoteTextOutline fontSize='small' />
-    if (path[0] === 'facturacion') return <NoteTextOutline fontSize='small' />
-    if (path[0] === 'saldos-clientes') return <AccountBalanceIcon fontSize='small' />
 
     return <></>
   }
 
   const goBack = () => {
-    if (path[0] === 'parametrias') {
-      if (path[1] === 'clientes') {
-        router.replace('/parametrias/clientes')
-      }
-
-      router.back()
-    }
-
-    if (path[0] === 'cobranzas') {
-      router.replace(`${COBRANZAS_ROUTE}`)
-    }
-
-    if (path[0] === 'facturacion') {
-      router.replace(`${FACTURACION_ROUTE}`)
-    }
-
-    if (path[0] === 'saldos-clientes') {
-      router.replace(`${SALDOS_CLIENTES_ROUTE}`)
+    if (path[0] === 'clientes') {
+      router.replace(`${CLIENTES_ROUTE}`)
     }
   }
 
   const getFirstBreadcrumb = () => {
-    if (path[0] === 'parametrias') return path[1]
-    if (path[0] === 'cobranzas') return path[0]
-    if (path[0] === 'facturacion') return 'Notas'
-    if (path[0] === 'saldos-clientes') return 'Saldos Clientes'
+    if (path[0] === 'clientes') return path[0]
   }
 
   const styles = {

@@ -1,14 +1,11 @@
 //** Base Imports */
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 
 //** MUI Imports */
 import {
-  Box,
   FormControl,
   FormHelperText,
   Grid,
-  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
@@ -30,11 +27,11 @@ import es from 'date-fns/locale/es'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum } from 'src/@core/enums'
 import useMount from 'src/@core/hooks/useMount'
-import { FetchErrorTypes, PaginationDataIS } from 'src/@core/types'
+import { FetchErrorTypes } from 'src/@core/types'
 import { removeSlashesAndScores, showApiErrorMessage, showApiSuccessMessage } from 'src/@core/utils'
 
 //** Store && APIs Imports */
-import { useDispatch, useSelector } from 'src/@core/configs/store'
+import { useSelector } from 'src/@core/configs/store'
 import {
   useCreateParametriaMutation,
   useUpdateParametriaMutation
@@ -49,12 +46,8 @@ import {
 // ** Custom Components
 import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
 import ButtonsActionsForm from 'src/@core/components/ButtonsActionsForm'
-import Loader from 'src/@core/components/Loader'
 import TitleSectionForm from 'src/@core/components/TitleSectionForm'
 import FormLayout from 'src/@core/layouts/FormLayout'
-import { useFetchConceptoFacturacionQuery } from 'src/bundle/parametrias/concepto-facturacion/data/conceptoFacturacionApiService'
-import { ConceptoFacturacionDTO } from 'src/bundle/parametrias/concepto-facturacion/domain/conceptoFacturacionModel'
-import { useFetchProductosQuery } from 'src/bundle/parametrias/productos/data/productosApiService'
 
 const schema = yup.object().shape({
   concepto: yup.object().shape({
@@ -65,22 +58,16 @@ const schema = yup.object().shape({
 function FormParametriasPage() {
   //** States */
   const { state, setState } = useAppContext()
-  const [conceptosList, setConceptosList] = useState<ConceptoFacturacionDTO[]>([])
 
   //** Hooks */
   const router = useRouter()
   const { params } = router.query
   const parametria_id = params![2]
   const accion = params![1]
-  const dispatch = useDispatch()
 
   //** APIs */
   const [crearParametria, { isLoading: isCreating }] = useCreateParametriaMutation()
   const [editarParametria, { isLoading: isUpdating }] = useUpdateParametriaMutation()
-  const { data: conceptos, isFetching: isFetchingConceptos } =
-    useFetchConceptoFacturacionQuery(PaginationDataIS)
-  const { data: productos, isFetching: isFetchingProductos } =
-    useFetchProductosQuery(PaginationDataIS)
 
   const {
     CLIENTES: { cliente }
@@ -91,15 +78,13 @@ function FormParametriasPage() {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
-    watch
+    reset
   } = useForm({
     defaultValues,
     mode: 'onChange',
     resolver: yupResolver(schema)
   })
 
-  const productoSelected = watch().producto
 
   useMount(() => {
     if (accion === AccionesEnum.EDITAR_PARAMETRIA && parametria_id) {
@@ -109,15 +94,6 @@ function FormParametriasPage() {
     }
   })
 
-  useEffect(() => {
-    if (productoSelected) {
-      const conceptosFiltered = conceptos?.registros.filter(c => {
-        return c.productos?.find(p => p === productoSelected)
-      })
-
-      setConceptosList(conceptosFiltered || [])
-    }
-  }, [productoSelected, conceptos?.registros, dispatch])
 
   const handleGoBack = () => router.back()
 
@@ -225,119 +201,6 @@ function FormParametriasPage() {
       <FormLayout title={removeSlashesAndScores(state.accion || '')}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={5}>
-            {/** producto */}
-            <Grid item sm={6}>
-              <FormControl fullWidth>
-                <InputLabel
-                  id='stepper-linear-personal-pais'
-                  error={Boolean(errors.producto)}
-                  htmlFor='stepper-linear-personal-pais'
-                >
-                  Producto *
-                </InputLabel>
-                <Controller
-                  name='producto'
-                  control={control}
-                  rules={{ required: state.accion === AccionesEnum.CREAR_PARAMETRIA }}
-                  render={({ field: { value, onChange } }) => (
-                    <Select
-                      value={value}
-                      label='Producto *'
-                      id='controlled-select'
-                      onChange={onChange}
-                      disabled={
-                        isFetchingConceptos ||
-                        isFetchingProductos ||
-                        isCreating ||
-                        isUpdating ||
-                        state.accion === AccionesEnum.EDITAR_PARAMETRIA
-                      }
-                      labelId='controlled-select-label'
-                      endAdornment={
-                        <InputAdornment position='end'>
-                          {isFetchingProductos && (
-                            <Box sx={{ width: '58px' }}>
-                              <Loader height='20px' size={20} />
-                            </Box>
-                          )}
-                        </InputAdornment>
-                      }
-                    >
-                      {productos?.registros.map(value => (
-                        <MenuItem key={value.id} value={value.nombre}>
-                          {value.nombre}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  )}
-                />
-                {errors.producto && (
-                  <FormHelperText
-                    sx={{ color: 'error.main' }}
-                    id='validation-schema-idioma_factura'
-                  >
-                    {errors.producto.message}
-                  </FormHelperText>
-                )}
-              </FormControl>
-            </Grid>
-
-            {/** concepto */}
-            <Grid item sm={6}>
-              <FormControl fullWidth>
-                <InputLabel
-                  id='stepper-linear-personal-pais'
-                  error={Boolean(errors.concepto)}
-                  htmlFor='stepper-linear-personal-pais'
-                >
-                  Concepto *
-                </InputLabel>
-                <Controller
-                  name='concepto.id'
-                  control={control}
-                  rules={{ required: state.accion === AccionesEnum.CREAR_PARAMETRIA }}
-                  render={({ field: { value, onChange } }) => (
-                    <Select
-                      value={value}
-                      label='Concepto *'
-                      id='controlled-select'
-                      onChange={onChange}
-                      disabled={
-                        isFetchingConceptos ||
-                        isCreating ||
-                        isUpdating ||
-                        conceptosList.length === 0 ||
-                        state.accion === AccionesEnum.EDITAR_PARAMETRIA
-                      }
-                      labelId='controlled-select-label'
-                      endAdornment={
-                        <InputAdornment position='end'>
-                          {isFetchingConceptos && (
-                            <Box sx={{ width: '58px' }}>
-                              <Loader height='20px' size={20} />
-                            </Box>
-                          )}
-                        </InputAdornment>
-                      }
-                    >
-                      {conceptosList.map(value => (
-                        <MenuItem key={value.id} value={value.id}>
-                          {value.nombre}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  )}
-                />
-                {errors.concepto?.id && (
-                  <FormHelperText
-                    sx={{ color: 'error.main' }}
-                    id='validation-schema-idioma_factura'
-                  >
-                    {errors.concepto?.id.message}
-                  </FormHelperText>
-                )}
-              </FormControl>
-            </Grid>
 
             <Grid item xs={12}>
               <TitleSectionForm text='Condiciones Especiales' />

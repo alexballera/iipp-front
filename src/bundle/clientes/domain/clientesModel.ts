@@ -7,25 +7,14 @@ import {
   FormComponentProps,
   ViewComponentProps
 } from 'src/@core/types'
-import { TipoDeProducto } from 'src/bundle/novedades/domain/novedadesModel'
-import {
-  Archivo,
-  DireccionDTO,
-  filtros,
-  IdiomaEnum,
-  ImpuestoTypes,
-  Jurisdiccion,
-  MonedaEnum,
-  order
-} from 'src/bundle/shared/domain'
-import { SumarioConceptoFacturacionDTO } from '../../parametrias/concepto-facturacion/domain/conceptoFacturacionModel'
+import { Archivo, DireccionDTO, filtros, IdiomaEnum, ImpuestoTypes, Jurisdiccion, MonedaEnum, order } from 'src/bundle/shared/domain'
 
 export type DataGridPercepcionesProps = {
-  percepciones: ImpuestoTypes[]
+  percepciones: []
 }
 
 export type DataGridImpuestosProps = {
-  impuestos: ImpuestoTypes[]
+  impuestos: []
 }
 
 export type DataGridDocumentosProps = {
@@ -112,8 +101,8 @@ export enum ProductosEnum {
 
 export type ParametriaComercialDTO = {
   id: string
-  producto: TipoDeProducto
-  concepto: SumarioConceptoFacturacionDTO
+  producto: any
+  concepto: any
   aplicacion: AplicacionParametria
 
   // cuenta_contable: string
@@ -209,8 +198,8 @@ export interface ClienteDTO {
   fecha_alta?: string
   fecha_modificacion?: string
   habilitado?: boolean
-  impuesto?: ImpuestoTypes
-  percepcion?: ImpuestoTypes
+  impuesto?: any
+  percepcion?: any
   impuestos?: ImpuestoTypes[]
   percepciones?: ImpuestoTypes[]
   datos_incompletos?: string[]
@@ -303,7 +292,7 @@ export const SumarioClienteIS: SumarioClienteDTO = {
 
 export const parametriaIS: ParametriaComercialDTO = {
   id: '',
-  producto: TipoDeProducto.CUSTODIA,
+  producto: '',
   concepto: {
     id: '',
     nombre: '',
@@ -361,7 +350,6 @@ export const clienteIS: ClienteDTO = {
     caja_valores: '',
     custodia_bony: ''
   },
-  numero_documento: [],
   direccion: DireccionIS,
   email: '',
   nombre_referente: '',
@@ -369,15 +357,7 @@ export const clienteIS: ClienteDTO = {
   idioma_factura: IdiomaEnum.ES,
   moneda: MonedaEnum.ARS,
   tipo_cliente: TipoClienteEnum.NACIONAL,
-  impuesto: ImpuestoTypesIS,
-  percepcion: ImpuestoTypesIS,
-  impuestos: [],
-  percepciones: [],
-  archivos: [],
-  parametrias: [],
-  datos_incompletos: [],
   cliente_banco: true,
-  productos: [],
   fecha_alta: '',
   fecha_modificacion: ''
 }

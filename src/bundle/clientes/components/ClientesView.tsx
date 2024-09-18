@@ -18,7 +18,7 @@ import {
 // * Customs components
 import CustomTooltip from 'src/@core/components/CustomTooltip'
 import TableSelection from 'src/@core/components/TableSelection'
-import { CLIENTES_ROUTE, PARAMETRIAS_ROUTE } from 'src/@core/constants'
+import { CLIENTES_ROUTE } from 'src/@core/constants'
 import { AccionesEnum } from 'src/@core/enums'
 import ClienteDetailModal from './ClienteDetailModal'
 import { columnsClientes } from './columns'
@@ -39,8 +39,7 @@ function ClientesView(props: ClientesViewProps) {
   const { setState, state } = useAppContext()
 
   const handleDetail = () => {
-    if (itemSelected != undefined)
-      router.push(`${PARAMETRIAS_ROUTE}${CLIENTES_ROUTE}/${itemSelected?.id}`)
+    if (itemSelected != undefined) router.push(`${CLIENTES_ROUTE}/${itemSelected?.id}`)
   }
 
   useEffect(() => {
@@ -63,7 +62,7 @@ function ClientesView(props: ClientesViewProps) {
       ...state,
       accion: AccionesEnum.CREAR_CLIENTE
     })
-    router.push(`${PARAMETRIAS_ROUTE}${CLIENTES_ROUTE}/form/${AccionesEnum.CREAR_CLIENTE}`)
+    router.push(`${CLIENTES_ROUTE}/form/${AccionesEnum.CREAR_CLIENTE}`)
   }
 
   const handlePageChange = (newPage: number, newAmmount: number) => {
