@@ -28,6 +28,7 @@ import {
 import useClientesHook from 'src/bundle/iipp/components/useClientesHook'
 
 //** Customs Components Imports */
+import { AccountTie } from 'mdi-material-ui'
 import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
 import ButtonsActionsForm from 'src/@core/components/ButtonsActionsForm'
 import { DateRangeIS, DateRangeTypes } from 'src/@core/components/DateRangeComponent'
@@ -40,8 +41,19 @@ import ClienteDireccionForm from 'src/bundle/iipp/components/form/ClienteDirecci
 import ClienteImpuestosForm from 'src/bundle/iipp/components/form/ClienteImpuestosForm'
 import ClienteProductosForm from 'src/bundle/iipp/components/form/ClienteProductosForm'
 import ClienteTipoForm from 'src/bundle/iipp/components/form/ClienteTipoForm'
-import { getIippByDocumentNumber, useCreateIippMutation, useUpdateIippMutation } from 'src/bundle/iipp/data/iippApiService'
-import { ClienteDatosExterno, ClienteDTO, clienteIS, DireccionIS, ImpuestoTypesIS, ProductosEnum } from 'src/bundle/iipp/domain/iippModel'
+import {
+  getIippByDocumentNumber,
+  useCreateIippMutation,
+  useUpdateIippMutation
+} from 'src/bundle/iipp/data/iippApiService'
+import {
+  ClienteDatosExterno,
+  ClienteDTO,
+  clienteIS,
+  DireccionIS,
+  ImpuestoTypesIS,
+  ProductosEnum
+} from 'src/bundle/iipp/domain/iippModel'
 import { Archivo, ImpuestoTypes } from 'src/bundle/shared/domain'
 
 const schema = yup.object().shape({
@@ -340,7 +352,7 @@ function FormClientesPage() {
             type: 'manual',
             message:
               error.data?.error?.message === 'Not Found' ||
-                error.data?.error?.message === 'Bad Request'
+              error.data?.error?.message === 'Bad Request'
                 ? 'Documento no encontrado'
                 : error.data?.error?.message
           })
@@ -656,7 +668,11 @@ function FormClientesPage() {
 
   return (
     <>
-      <BreadcrumbsComponent breadCrumbItems={getBreadCrumb()} />
+      <BreadcrumbsComponent
+        firstBreadcrumb='iipp'
+        icon={<AccountTie fontSize='small' />}
+        breadCrumbItems={getBreadCrumb()}
+      />
       <FormLayout title={removeSlashesAndScores(params?.[0] || '')}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ClienteCuentaForm

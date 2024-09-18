@@ -44,6 +44,7 @@ import {
 } from 'src/bundle/iipp/domain/iippModel'
 
 // ** Custom Components
+import { AccountTie } from 'mdi-material-ui'
 import BreadcrumbsComponent from 'src/@core/components/BreadcrumbsComponent'
 import ButtonsActionsForm from 'src/@core/components/ButtonsActionsForm'
 import TitleSectionForm from 'src/@core/components/TitleSectionForm'
@@ -85,7 +86,6 @@ function FormParametriasPage() {
     resolver: yupResolver(schema)
   })
 
-
   useMount(() => {
     if (accion === AccionesEnum.EDITAR_PARAMETRIA && parametria_id) {
       const parametriaAEditar = iipp?.parametrias?.find(p => p.id === parametria_id)
@@ -93,7 +93,6 @@ function FormParametriasPage() {
       if (parametriaAEditar) reset(parametriaAEditar)
     }
   })
-
 
   const handleGoBack = () => router.back()
 
@@ -197,11 +196,14 @@ function FormParametriasPage() {
 
   return (
     <>
-      <BreadcrumbsComponent breadCrumbItems={getBreadCrumbItems()} />
+      <BreadcrumbsComponent
+        firstBreadcrumb='iipp'
+        icon={<AccountTie fontSize='small' />}
+        breadCrumbItems={getBreadCrumbItems()}
+      />
       <FormLayout title={removeSlashesAndScores(state.accion || '')}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={5}>
-
             <Grid item xs={12}>
               <TitleSectionForm text='Condiciones Especiales' />
             </Grid>

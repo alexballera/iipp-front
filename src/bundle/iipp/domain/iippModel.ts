@@ -7,7 +7,16 @@ import {
   FormComponentProps,
   ViewComponentProps
 } from 'src/@core/types'
-import { Archivo, DireccionDTO, filtros, IdiomaEnum, ImpuestoTypes, Jurisdiccion, MonedaEnum, order } from 'src/bundle/shared/domain'
+import {
+  Archivo,
+  DireccionDTO,
+  filtros,
+  IdiomaEnum,
+  ImpuestoTypes,
+  Jurisdiccion,
+  MonedaEnum,
+  order
+} from 'src/bundle/shared/domain'
 
 export type DataGridPercepcionesProps = {
   percepciones: []

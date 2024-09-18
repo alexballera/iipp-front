@@ -11,7 +11,7 @@ import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { ElasticSearchDataIS, PaginationData, PaginationDataIS, QueryParams } from 'src/@core/types'
-import ClientesView from 'src/bundle/iipp/components/ClientesView'
+import IippView from 'src/bundle/iipp/components/IippView'
 import { useFetchIippQuery } from 'src/bundle/iipp/data/iippApiService'
 import { setIippElasticSearch, setIippList } from 'src/bundle/iipp/data/iippStore'
 import { ClienteFiltrosDTO, ClientesFiltrosIS } from 'src/bundle/iipp/domain/iippModel'
@@ -52,7 +52,7 @@ function IippPage() {
             textoPrincipal='Parametrías'
             textoSecundario=''
           />
-          <ClientesView
+          <IippView
             data={data || ElasticSearchDataIS}
             isLoading={loading}
             isFetching={loading}

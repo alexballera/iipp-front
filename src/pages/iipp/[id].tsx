@@ -11,6 +11,7 @@ import ErrorMessageBackButton from 'src/@core/components/ErrorMessageBackButton'
 import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
 
+import { AccountTie } from 'mdi-material-ui'
 import ClienteDetailView from 'src/bundle/iipp/components/ClienteDetailView'
 import { useGetIippByIdQuery } from 'src/bundle/iipp/data/iippApiService'
 import { setIipp } from 'src/bundle/iipp/data/iippStore'
@@ -36,7 +37,6 @@ function IippDetailPage() {
     refetch()
   }, [refetch])
 
-
   const breadCrumbDetalle = [
     {
       id: '01',
@@ -48,11 +48,14 @@ function IippDetailPage() {
 
   if (isError) return <ErrorMessageBackButton message={'Ha ocurrido un error inesperado'} />
 
-
   return (
     <Suspense fallback={<Spinner />}>
       <>
-        <BreadcrumbsComponent breadCrumbItems={breadCrumbDetalle} />
+        <BreadcrumbsComponent
+          firstBreadcrumb='iipp'
+          icon={<AccountTie fontSize='small' />}
+          breadCrumbItems={breadCrumbDetalle}
+        />
         {cliente && (
           <>
             <Grid container spacing={6}>

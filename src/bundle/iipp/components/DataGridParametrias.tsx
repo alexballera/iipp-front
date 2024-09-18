@@ -8,7 +8,7 @@ import CustomTooltip from 'src/@core/components/CustomTooltip'
 import ModalConfirmacion from 'src/@core/components/ModalConfirmacion/index '
 import TableSelection from 'src/@core/components/TableSelection'
 import { RootState, useDispatch, useSelector } from 'src/@core/configs/store'
-import { CLIENTES_ROUTE } from 'src/@core/constants'
+import { IIPP_ROUTE } from 'src/@core/constants'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum } from 'src/@core/enums'
 import { FetchErrorTypes } from 'src/@core/types'
@@ -150,7 +150,7 @@ function DataGridParametrias({ parametrias }: DataGridParametriasProps) {
     })
     const parametria_id = idSelected
     router.push(
-      `${CLIENTES_ROUTE}/parametria/${iipp.id}/${AccionesEnum.EDITAR_PARAMETRIA}/${parametria_id}`
+      `${IIPP_ROUTE}/parametria/${iipp.id}/${AccionesEnum.EDITAR_PARAMETRIA}/${parametria_id}`
     )
     handleClose()
   }
@@ -160,7 +160,7 @@ function DataGridParametrias({ parametrias }: DataGridParametriasProps) {
       ...state,
       accion: AccionesEnum.CREAR_PARAMETRIA
     })
-    router.push(`${CLIENTES_ROUTE}/parametria/${iipp.id}/${AccionesEnum.CREAR_PARAMETRIA}`)
+    router.push(`${IIPP_ROUTE}/parametria/${iipp.id}/${AccionesEnum.CREAR_PARAMETRIA}`)
   }
 
   const handleCloseModal = () => {

@@ -1,11 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ElasticSearchData, ElasticSearchDataIS } from 'src/@core/types'
-import {
-  ClienteDTO,
-  ParametriaComercialDTO,
-  clienteIS,
-  parametriaIS
-} from '../domain/iippModel'
+import { ClienteDTO, ParametriaComercialDTO, clienteIS, parametriaIS } from '../domain/iippModel'
 
 const initialState = {
   iipp: clienteIS,

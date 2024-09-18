@@ -299,8 +299,9 @@ function ClienteDetailView() {
               <ModalConfirmacion
                 open={openModal}
                 onClose={() => setOpenModal(false)}
-                title={`CONFIRMA ${cliente?.habilitado ? 'DESHABILITAR' : 'HABILITAR'
-                  } ${cliente?.nombre?.toUpperCase()}`}
+                title={`CONFIRMA ${
+                  cliente?.habilitado ? 'DESHABILITAR' : 'HABILITAR'
+                } ${cliente?.nombre?.toUpperCase()}`}
                 onClick={handleDeshabilitarCliente}
                 loading={isChangingClientState}
               />
