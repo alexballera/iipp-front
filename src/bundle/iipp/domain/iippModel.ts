@@ -258,12 +258,12 @@ export interface ClienteDatosExterno {
   }
 }
 
-export interface ClienteFiltrosDTO {
+export interface IIPPFiltrosDTO {
   filtros?: filtros[]
   orden?: order[]
 }
 
-export type ClienteFiltrosProps = FiltrosProps<ClienteFiltrosDTO>
+export type ClienteFiltrosProps = FiltrosProps<IIPPFiltrosDTO>
 
 export type CrearClienteDTO = Omit<ClienteDTO, 'fecha_modificacion' | 'fecha_alta' | 'email'> & {
   documentos?: string[]
@@ -371,7 +371,7 @@ export const clienteIS: ClienteDTO = {
   fecha_modificacion: ''
 }
 
-export const ClientesFiltrosIS: ClienteFiltrosDTO = {
+export const IIPPFiltrosIS: IIPPFiltrosDTO = {
   filtros: [
     { campo: 'cliente_completo', valor: '' },
     { campo: 'numero_documento', valor: '' },

@@ -146,7 +146,7 @@ function FormClientesPage() {
   const { params } = router.query
 
   useEffect(() => {
-    if (appState.accion === AccionesEnum.EDITAR_CLIENTE) {
+    if (appState.accion === AccionesEnum.EDITAR_IIPP) {
       reset({ ...iipp })
       setImpuestos(iipp.impuestos || [])
       setPercepciones(iipp.percepciones || [])
@@ -357,7 +357,7 @@ function FormClientesPage() {
                 : error.data?.error?.message
           })
 
-          if (appState.accion === AccionesEnum.CREAR_CLIENTE) {
+          if (appState.accion === AccionesEnum.CREAR_IIPP) {
             setTimeout(() => {
               reset({ ...clienteIS, archivo: null })
               setState({
@@ -647,7 +647,7 @@ function FormClientesPage() {
       documentos
     }
 
-    if (appState.accion === AccionesEnum.EDITAR_CLIENTE) {
+    if (appState.accion === AccionesEnum.EDITAR_IIPP) {
       updateCliente(body)
         .unwrap()
         .then(() => {

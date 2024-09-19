@@ -5,17 +5,15 @@ import { memo, useEffect, useState } from 'react'
 // * MUI Imports
 import { IconButton, Stack } from '@mui/material'
 import { GridCellParams, GridFeatureModeConstant } from '@mui/x-data-grid'
-import { PlusCircleOutline, Refresh } from 'mdi-material-ui'
+import { Refresh } from 'mdi-material-ui'
 
 // * Store, Types, Enums & Utils Imports
-import { useAppContext } from 'src/@core/context/AppContext'
 import { ClientesViewProps } from '../domain/iippModel'
 
 // * Customs components
 import CustomTooltip from 'src/@core/components/CustomTooltip'
 import TableSelection from 'src/@core/components/TableSelection'
 import { IIPP_ROUTE } from 'src/@core/constants'
-import { AccionesEnum } from 'src/@core/enums'
 import { columnsClientes } from './columns'
 
 function IippView(props: ClientesViewProps) {
@@ -27,21 +25,12 @@ function IippView(props: ClientesViewProps) {
 
   // * Hooks & Context
   const router = useRouter()
-  const { setState, state } = useAppContext()
   useEffect(() => {
     if (itemSelected != undefined && itemSelected.field === 'accion') {
       router.push(`${IIPP_ROUTE}/${itemSelected?.id}`)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemSelected])
-
-  const handleCrearCliente = () => {
-    setState({
-      ...state,
-      accion: AccionesEnum.CREAR_CLIENTE
-    })
-    router.push(`${IIPP_ROUTE}/form/${AccionesEnum.CREAR_CLIENTE}`)
-  }
 
   const handlePageChange = (newPage: number, newAmmount: number) => {
     setPaginationData({ pagina: newPage, cantidad: newAmmount })
@@ -76,20 +65,6 @@ function IippView(props: ClientesViewProps) {
               }}
             >
               <Refresh fontSize='small' />
-            </IconButton>
-          </CustomTooltip>
-
-          <CustomTooltip
-            text='Crear Cliente'
-            icon={<PlusCircleOutline fontSize='small' color='success' sx={{ mr: 1 }} />}
-          >
-            <IconButton
-              onClick={handleCrearCliente}
-              color='primary'
-              aria-label='upload picture'
-              component='label'
-            >
-              <PlusCircleOutline fontSize='small' />
             </IconButton>
           </CustomTooltip>
         </Stack>

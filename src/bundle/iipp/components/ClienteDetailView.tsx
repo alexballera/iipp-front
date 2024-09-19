@@ -98,10 +98,10 @@ function ClienteDetailView() {
   const handleEditarCliente = useCallback(() => {
     setState({
       ...state,
-      accion: AccionesEnum.EDITAR_CLIENTE
+      accion: AccionesEnum.EDITAR_IIPP
     })
 
-    router.push(`form/${AccionesEnum.EDITAR_CLIENTE}`)
+    router.push(`form/${AccionesEnum.EDITAR_IIPP}`)
   }, [router, setState, state])
 
   const handleConfirmarDeshabilitar = () => {

@@ -73,5 +73,5 @@ export function AppProvider({ children }: AppProviderProps) {
 }
 
 export const useAppContext = () => useContext(AppContext)
-AppContext.displayName = 'MC-CUSTODIA App Context'
+AppContext.displayName = 'IIPP App Context'
 export default AppContext
