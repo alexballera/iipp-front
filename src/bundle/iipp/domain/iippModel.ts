@@ -13,148 +13,12 @@ import {
   filtros,
   IdiomaEnum,
   ImpuestoTypes,
-  Jurisdiccion,
   MonedaEnum,
   order
 } from 'src/bundle/shared/domain'
 
-export type DataGridPercepcionesProps = {
-  percepciones: []
-}
-
-export type DataGridImpuestosProps = {
-  impuestos: []
-}
-
-export type DataGridDocumentosProps = {
-  documentos: NumeroCuenta[]
-}
-
-export type DataGridCorreosProps = {
-  correos: string[]
-}
-
-export enum CategoriaDeProductoCustodia {
-  OPERACIONES_BONY = 'OPERACIONES_BONY',
-  OPERACIONES_TRESURY = 'OPERACIONES_TRESURY',
-  OPERACIONES_SGM = 'OPERACIONES_SGM'
-}
-
-export enum TipoOperador {
-  SUMA = '+',
-  RESTA = '-',
-  MAYOR_QUE = '>',
-  MENOR_QUE = '<',
-  ENTRE = '><',
-  PORCENTAJE = '%',
-  MULTIPLICACION = 'x'
-}
-
-export enum TipoCondicion {
-  POR_UNIDAD = 'PU',
-  POR_SUMATORIA = 'PS'
-}
-
-export const TipoOperadorLabels = {
-  [TipoOperador.SUMA]: 'SUMA',
-  [TipoOperador.RESTA]: 'RESTA',
-  [TipoOperador.MAYOR_QUE]: 'MAYOR QUE',
-  [TipoOperador.MENOR_QUE]: 'MENOR QUE',
-  [TipoOperador.ENTRE]: 'ENTRE',
-  [TipoOperador.PORCENTAJE]: 'PORCENTAJE',
-  [TipoOperador.MULTIPLICACION]: 'MULTIPLICACION'
-}
-
-export const TipoCondicionLabels = {
-  [TipoCondicion.POR_UNIDAD]: 'Cantidad',
-  [TipoCondicion.POR_SUMATORIA]: 'Sumatoria del Monto'
-}
-
-export enum AplicacionParametria {
-  MONTO_TOTAL_DEUDA = 'MONTO_TOTAL_DEUDA',
-  CANTIDAD_OPERACIONES = 'CANTIDAD_OPERACIONES',
-  TENENCIA_CLIENTE = 'TENENCIA_CLIENTE'
-}
-
-export enum TipoParametriaComercial {
-  ESPECIAL = 'ESPECIAL',
-  ESTANDAR = 'ESTANDAR'
-}
-
-export enum TipoOperacionParametria {
-  BONIFICACION = 'BONIFICACION',
-  COSTO = 'COSTO'
-}
-
-export enum TipoMercado {
-  LOCAL = 'LOCAL',
-  EXTERIOR = 'EXTERIOR'
-}
-
-export enum TipoClienteEnum {
-  NACIONAL = 'NACIONAL',
-  EXTERIOR = 'EXTERIOR'
-}
-
-export enum JurisdiccionEnum {
-  NACIONAL = 'NACIONAL',
-  EXTERIOR = 'EXTERIOR'
-}
-
-export enum ProductosEnum {
-  CEDEARS = 'CEDEARS',
-  CUSTODIA = 'CUSTODIA',
-  FIDEICOMISOS = 'FIDEICOMISOS',
-  FONDOS = 'FONDOS'
-}
-
-export type ParametriaComercialDTO = {
-  id: string
-  producto: any
-  concepto: any
-  aplicacion: AplicacionParametria
-
-  // cuenta_contable: string
-  // impuesto: string
-  // moneda: string
-  // calculo: string
-  cliente_id: string
-  fecha_alta: string
-  precio?: number
-  costo?: number
-  maximo?: number
-  minimo?: number
-  monto_deuda?: number
-  fecha_vigencia_inicio?: string
-  fecha_vigencia_fin?: string
-}
-
-export type CrearParametriaComercialDTO = Omit<
-  ParametriaComercialDTO,
-  'fecha_alta' | 'fecha_modificacion'
-> & {
-  cliente_id: string
-}
-
-export type ModificarParametriaComercialDTO = CrearParametriaComercialDTO
-export type EliminarParametriaComercialDTO = {
-  cliente_id: string
-  id: string
-}
-
 export const TipoDocumento = ['CUIT', 'CUIL', 'Código CNV', 'DNI', 'PASAPORTE']
 
-export interface EmailDTO {
-  email: string
-  fecha_alta: Date
-  marca_de_preferido: boolean
-  razon_social: string
-  secuencia: number
-  uso: {
-    codigo: number
-    descripcion: string
-  }
-}
 export interface DireccionApi {
   pais?: {
     codigo: string
@@ -200,7 +64,6 @@ export interface ClienteDTO {
   telefono?: string
   idioma_factura?: IdiomaEnum
   moneda?: MonedaEnum
-  tipo_cliente?: TipoClienteEnum
   archivo?: any
   cliente_banco?: boolean
   cliente_completo?: boolean
@@ -212,50 +75,9 @@ export interface ClienteDTO {
   impuestos?: ImpuestoTypes[]
   percepciones?: ImpuestoTypes[]
   datos_incompletos?: string[]
-  parametrias?: ParametriaComercialDTO[]
   archivos?: Archivo[]
   productos?: string[]
   minimo?: number
-}
-
-export interface ClienteDatosExterno {
-  datos_personales: {
-    habilitado: boolean
-    tipo_cliente: {
-      codigo: string
-      descripcion: string
-    }
-    tipo_documento: number
-    numero_documento: string
-    tipo_persona: string
-    apellido: string
-    nombre: string
-    razon_social: string
-  }
-  direcciones: DireccionApi[]
-  emails: EmailDTO[]
-  datos_impositivos: {
-    iva: {
-      condicion: string
-      percepcion: number
-      percepcion_exclusion: number
-      jurisdicciones: Jurisdiccion[]
-    }
-    impuesto_ganancias: {
-      condicion: number
-      exclusion: boolean
-      porcentaje_exclusion: number
-      jurisdicciones: Jurisdiccion[]
-    }
-    ingresos_brutos: {
-      condicion: string
-      numero: number
-      jurisdicciones: Jurisdiccion[]
-    }
-  }
-  datos_adicionales: {
-    empleado_del_banco: boolean
-  }
 }
 
 export interface IIPPFiltrosDTO {
@@ -299,35 +121,6 @@ export const SumarioClienteIS: SumarioClienteDTO = {
   numero_documento: []
 }
 
-export const parametriaIS: ParametriaComercialDTO = {
-  id: '',
-  producto: '',
-  concepto: {
-    id: '',
-    nombre: '',
-    productos: [],
-    cuenta_contable: '',
-    impuesto: {
-      nombre: '',
-      alicuota: 0,
-      cuenta_contable: 0,
-      moneda: []
-    }
-  },
-  aplicacion: AplicacionParametria.CANTIDAD_OPERACIONES,
-
-  // cuenta_contable: '',
-  // impuesto: '',
-  // moneda: '',
-  // calculo: '',
-  fecha_alta: '',
-  cliente_id: '',
-  precio: 0,
-  costo: 0,
-  maximo: 0,
-  minimo: 0
-}
-
 export const DireccionIS = {
   pais: '',
   localidad: '',
@@ -365,7 +158,6 @@ export const clienteIS: ClienteDTO = {
   telefono: '',
   idioma_factura: IdiomaEnum.ES,
   moneda: MonedaEnum.ARS,
-  tipo_cliente: TipoClienteEnum.NACIONAL,
   cliente_banco: true,
   fecha_alta: '',
   fecha_modificacion: ''

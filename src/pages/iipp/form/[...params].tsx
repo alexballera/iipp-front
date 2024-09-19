@@ -1,6 +1,6 @@
 // ** Base Imports
 import { useRouter } from 'next/router'
-import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
 // ** MUI Imports
 import { Grid, SelectChangeEvent } from '@mui/material'
@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
 //** Types, Enums, Utils & Constants Imports */
-import { useDispatch, useSelector } from 'src/@core/configs/store'
+import { useSelector } from 'src/@core/configs/store'
 import { APP_ROUTE, ARCHIVO_ROUTE, ONLY_NUMBERS } from 'src/@core/constants'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum, CategoriaArchivoEnum, UbicacionDocumentoEnum } from 'src/@core/enums'
@@ -22,8 +22,7 @@ import {
   removeSlashesAndScores,
   showApiErrorMessage,
   showApiSuccessMessage,
-  showMessageError,
-  UppercaseWord
+  showMessageError
 } from 'src/@core/utils'
 import useClientesHook from 'src/bundle/iipp/components/useClientesHook'
 
@@ -41,18 +40,12 @@ import ClienteDireccionForm from 'src/bundle/iipp/components/form/ClienteDirecci
 import ClienteImpuestosForm from 'src/bundle/iipp/components/form/ClienteImpuestosForm'
 import ClienteProductosForm from 'src/bundle/iipp/components/form/ClienteProductosForm'
 import ClienteTipoForm from 'src/bundle/iipp/components/form/ClienteTipoForm'
+import { useCreateIippMutation, useUpdateIippMutation } from 'src/bundle/iipp/data/iippApiService'
 import {
-  getIippByDocumentNumber,
-  useCreateIippMutation,
-  useUpdateIippMutation
-} from 'src/bundle/iipp/data/iippApiService'
-import {
-  ClienteDatosExterno,
   ClienteDTO,
   clienteIS,
   DireccionIS,
-  ImpuestoTypesIS,
-  ProductosEnum
+  ImpuestoTypesIS
 } from 'src/bundle/iipp/domain/iippModel'
 import { Archivo, ImpuestoTypes } from 'src/bundle/shared/domain'
 
@@ -73,10 +66,8 @@ function FormClientesPage() {
   //** States */
   const [codigoPostal, setCodigoPostal] = useState('')
   const [errorArchivo, setErrorArchivo] = useState<boolean>(false)
-  const [documento, setDocumento] = useState<string>('')
   const [documentos, setDocumentos] = useState<string[]>([])
   const [showCustomType, setShowCustomType] = useState(false)
-  const [isValidDocumento, setIsValidDocumento] = useState<boolean>(false)
   const [openDateRangeImpuesto, setOpenDateRangeImpuesto] = useState<boolean>(false)
   const [openDateRangePercepcion, setOpenDateRangePercepcion] = useState<boolean>(false)
   const [selectionDateRangeImpuesto, setSelectionDateRangeImpuesto] =
@@ -113,7 +104,6 @@ function FormClientesPage() {
 
   //** Hooks */
   const router = useRouter()
-  const dispatch = useDispatch()
   const { state: appState, setState: setAppState } = useAppContext()
   const {
     control,
@@ -121,7 +111,6 @@ function FormClientesPage() {
     watch,
     register,
     setError,
-    clearErrors,
     resetField,
     setValue,
     reset,
@@ -159,10 +148,6 @@ function FormClientesPage() {
     setState(prevState => ({
       ...prevState,
       isClienteBanco: iipp.cliente_banco || false,
-      fideicomisos: iipp?.productos?.includes(ProductosEnum.FIDEICOMISOS) || false,
-      cedears: iipp?.productos?.includes(ProductosEnum.CEDEARS) || false,
-      custodia: iipp?.productos?.includes(ProductosEnum.CUSTODIA) || false,
-      fondos: iipp?.productos?.includes(ProductosEnum.FONDOS) || false,
       loading: false,
       loadingArchivo: false,
       loadingInput: false,
@@ -267,125 +252,6 @@ function FormClientesPage() {
     setArchivos([])
     setCorreos([])
   }
-
-  const onBlurInputDocumento = useCallback(() => {
-    if (documento?.length) {
-      const validarDocumentoCliente = dispatch(getIippByDocumentNumber.initiate(documento))
-
-      setState({
-        ...state,
-        loadingInput: true
-      })
-
-      const handleAgregarDocumento = (doc: string) => {
-        if (!doc || doc === '') {
-          setError('documento', {
-            type: 'manual',
-            message: 'Debes llenar el campo'
-          })
-
-          return
-        }
-
-        setDocumentos(prev => [...prev, doc])
-
-        reset({ ...getValues(), documento: '' })
-      }
-
-      validarDocumentoCliente
-        .unwrap()
-        .then((res: ClienteDatosExterno) => {
-          if (res) {
-            setTimeout(() => {
-              setIsValidDocumento(true)
-              const updatedData = {
-                nombre: res.datos_personales.razon_social,
-                direccion: {
-                  pais: UppercaseWord(res.direcciones[0].pais?.descripcion),
-                  provincia: res.direcciones[0].provincia?.descripcion,
-                  localidad: res.direcciones[0].localidad?.descripcion,
-                  codigo_postal: res.direcciones[0]?.codigo_postal,
-                  calle: res.direcciones[0]?.nombre_calle,
-                  numero: res.direcciones[0]?.numero_puerta,
-                  piso: res.direcciones[0]?.piso,
-                  departamento: res.direcciones[0]?.departamento
-                },
-                email: res.emails[0]?.email || '',
-                habilitado: res.datos_personales?.habilitado,
-                impuesto: {
-                  nombre: 'IVA',
-                  condicion: res.datos_impositivos?.iva?.condicion,
-                  alicuota: res.datos_impositivos?.iva?.percepcion,
-                  jurisdiccion: '',
-                  habilitado: true,
-                  fecha_desde: '',
-                  fecha_hasta: '',
-                  cuenta_contable: 0
-                },
-                percepcion: {
-                  nombre: 'IIBB',
-                  condicion: res.datos_impositivos?.ingresos_brutos?.condicion,
-                  alicuota: res.datos_impositivos?.iva?.percepcion,
-                  jurisdiccion: '',
-                  habilitado: true,
-                  fecha_desde: '',
-                  fecha_hasta: '',
-                  cuenta_contable: 0
-                }
-              }
-
-              setState({
-                ...state,
-                isClienteBanco: true
-              })
-              reset({
-                ...updatedData,
-                documento: documento || ''
-              })
-            }, 2000)
-          }
-        })
-        .catch((error: FetchErrorTypes) => {
-          setIsValidDocumento(false)
-
-          setError('numero_documento', {
-            type: 'manual',
-            message:
-              error.data?.error?.message === 'Not Found' ||
-              error.data?.error?.message === 'Bad Request'
-                ? 'Documento no encontrado'
-                : error.data?.error?.message
-          })
-
-          if (appState.accion === AccionesEnum.CREAR_IIPP) {
-            setTimeout(() => {
-              reset({ ...clienteIS, archivo: null })
-              setState({
-                ...state,
-                fideicomisos: false,
-                cedears: false,
-                custodia: false,
-                fondos: false
-              })
-            }, 3000)
-          }
-        })
-        .finally(() => {
-          validarDocumentoCliente.unsubscribe()
-
-          setState({
-            ...state,
-            loadingInput: false
-          })
-
-          setTimeout(() => {
-            setIsValidDocumento(false)
-            clearErrors('numero_documento')
-            handleAgregarDocumento(documento)
-          }, 3000)
-        })
-    }
-  }, [dispatch, documento, reset, state, setError, clearErrors, getValues, appState])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setState({
@@ -626,12 +492,6 @@ function FormClientesPage() {
       return
     }
 
-    const productos = []
-    if (state.cedears) productos.push(ProductosEnum.CEDEARS)
-    if (state.custodia) productos.push(ProductosEnum.CUSTODIA)
-    if (state.fideicomisos) productos.push(ProductosEnum.FIDEICOMISOS)
-    if (state.fondos) productos.push(ProductosEnum.FONDOS)
-
     const body = {
       ...dataForm,
       emails: correos,
@@ -642,7 +502,6 @@ function FormClientesPage() {
       },
       impuestos,
       percepciones,
-      productos,
       archivos,
       documentos
     }
@@ -682,10 +541,7 @@ function FormClientesPage() {
             loading={state.loading}
             control={control}
             errors={errors}
-            isValidDocumento={isValidDocumento}
             loadingInput={state.loadingInput}
-            onBlur={onBlurInputDocumento}
-            setDocumento={setDocumento}
             documentos={documentos}
             setDocumentos={setDocumentos}
           />

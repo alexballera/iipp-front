@@ -60,9 +60,6 @@ function ClienteDetailModal(props: ClienteDetalleState) {
                 valor={`${obtenerDocumentoPorJerarquia()?.tipo} - ${obtenerDocumentoPorJerarquia()?.valor}`}
               />
               {data?.telefono && <DatoDetalle nombre='Número Teléfono' valor={data?.telefono} />}
-              {data?.tipo_cliente && (
-                <DatoDetalle nombre='Tipo Cliente' valor={data?.tipo_cliente} />
-              )}
               <DatoDetalle
                 nombre='Cliente Banco'
                 valor={data?.cliente_banco ? 'Cliente' : 'No cliente'}

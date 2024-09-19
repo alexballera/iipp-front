@@ -1,10 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ElasticSearchData, ElasticSearchDataIS } from 'src/@core/types'
-import { ClienteDTO, ParametriaComercialDTO, clienteIS, parametriaIS } from '../domain/iippModel'
+import { ClienteDTO, clienteIS } from '../domain/iippModel'
 
 const initialState = {
   iipp: clienteIS,
-  parametria: parametriaIS,
   iippList: [clienteIS],
   iippElasticSearch: ElasticSearchDataIS
 }
@@ -60,23 +59,6 @@ export const iippSlice = createSlice({
       }
 
       return { ...state }
-    },
-    setParametria: (state, action: PayloadAction<ParametriaComercialDTO>) => {
-      state = {
-        ...state,
-        parametria: action.payload
-      }
-
-      return { ...state }
-    },
-
-    cleanParametria: state => {
-      state = {
-        ...state,
-        parametria: initialState.parametria
-      }
-
-      return { ...state }
     }
   }
 })
@@ -85,10 +67,8 @@ export const {
   cleanIipp,
   cleanIippElasticSearch,
   cleanIppList,
-  cleanParametria,
   setIipp,
   setIippElasticSearch,
-  setIippList,
-  setParametria
+  setIippList
 } = iippSlice.actions
 export default iippSlice.reducer
