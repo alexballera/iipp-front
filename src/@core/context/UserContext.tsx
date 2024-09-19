@@ -124,5 +124,5 @@ const UserProvider = ({ children }: Props) => {
   return <UserContext.Provider value={values}>{children}</UserContext.Provider>
 }
 export const useUser = () => useContext(UserContext)
-UserContext.displayName = 'MC-CUSTODIA User Context'
+UserContext.displayName = 'IIPP User Context'
 export { UserContext, UserProvider }

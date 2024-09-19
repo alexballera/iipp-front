@@ -16,7 +16,7 @@ const TemplateName = () => {
         color: theme.palette.primary.main
       }}
     >
-      {'mc-custodia'}
+      {'iipp'}
     </Typography>
   )
 }

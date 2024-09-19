@@ -27,10 +27,10 @@ class CustomDocument extends Document {
           />
           <link rel='apple-touch-icon' sizes='180x180' href='/images/icons/favicon.ico' />
           <link rel='shortcut icon' href='/images/icons/favicon.ico' />
-          <meta name='application-name' content='MC-CUSTODIA COMAFI' />
+          <meta name='application-name' content='IIPP COMAFI' />
           <meta name='apple-mobile-web-app-capable' content='yes' />
           <meta name='apple-mobile-web-app-status-bar-style' content='default' />
-          <meta name='apple-mobile-web-app-title' content='MC-CUSTODIA COMAFI' />
+          <meta name='apple-mobile-web-app-title' content='IIPP COMAFI' />
           <meta name='format-detection' content='telephone=no' />
           <meta name='mobile-web-app-capable' content='yes' />
           <meta name='msapplication-config' content='/images/icons/browserconfig.xml' />
@@ -97,17 +97,17 @@ class CustomDocument extends Document {
 
           <meta name='twitter:card' content='summary' />
           <meta name='twitter:url' content='https://yourdomain.com' />
-          <meta name='twitter:title' content='MC-CUSTODIA COMAFI' />
-          <meta name='twitter:description' content='MC-CUSTODIA COMAFI' />
+          <meta name='twitter:title' content='IIPP COMAFI' />
+          <meta name='twitter:description' content='IIPP COMAFI' />
           <meta
             name='twitter:image'
             content='https://yourdomain.com/images/icons/android-chrome-192x192.png'
           />
           <meta name='twitter:creator' content='@DavidWShadow' />
           <meta property='og:type' content='website' />
-          <meta property='og:title' content='MC-CUSTODIA COMAFI' />
-          <meta property='og:description' content='MC-CUSTODIA COMAFI' />
-          <meta property='og:site_name' content='MC-CUSTODIA COMAFI' />
+          <meta property='og:title' content='IIPP COMAFI' />
+          <meta property='og:description' content='IIPP COMAFI' />
+          <meta property='og:site_name' content='IIPP COMAFI' />
           <meta property='og:url' content='https://yourdomain.com' />
           <meta
             property='og:image'
