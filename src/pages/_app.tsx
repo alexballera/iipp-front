@@ -97,7 +97,7 @@ const App = (props: ExtendedAppProps) => {
             <meta name='description' content={`${themeConfig.templateName}`} />
             <meta
               name='keywords'
-              content='COMAFI, Sociedad de Gerentes, Fondos Comunes de Inversión'
+              content='COMAFI, Sociedad de Gerentes, Fondos Comunes de Inversión, Intrucciones Permanentes'
             />
             <meta
               name='viewport'
