@@ -37,8 +37,8 @@ import { createEmotionCache } from 'src/@core/utils'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // ** Global css styles
-import 'react-date-range/dist/styles.css' // main style file
-import 'react-date-range/dist/theme/default.css' // theme css file
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 import '../@core/styles/globals.scss'
 
 //** Store */
