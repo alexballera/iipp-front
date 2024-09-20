@@ -14,13 +14,13 @@ import FallbackSpinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum } from 'src/@core/enums'
-import { showApiErrorMessage, showArrayComma } from 'src/@core/utils'
+import { formatDate, showApiErrorMessage, showArrayComma } from 'src/@core/utils'
 import { MenuItemsAccion } from 'src/bundle/shared/domain'
 import { useGetIippByIdQuery } from '../data/iippApiService'
 import { setIipp } from '../data/iippStore'
 import { NumeroCuenta, TipoDocumento } from '../domain/iippModel'
 
-function ClienteDetailView() {
+function IIPPDetailView() {
   const [tooltipText, setTooltipText] = useState<string>('Copiar')
 
   //** Hooks */
@@ -80,7 +80,7 @@ function ClienteDetailView() {
     <>
       <Card>
         <CardHeader
-          title='Detalle del Cliente'
+          title='Detalle de la instrucción permanente'
           action={
             <Stack direction='row' alignItems='center'>
               {menuItems.map(({ title, icon, actions }, i) => (
@@ -138,9 +138,9 @@ function ClienteDetailView() {
             ) : (
               <></>
             )}
-            {cliente?.email ? (
+            {cliente?.fecha_alta ? (
               <Grid item xs={12} sm={3}>
-                <ShowDataLabel label='Email' data={cliente.email} />
+                <ShowDataLabel label='Fecha alta' data={formatDate(cliente.fecha_alta, 'es-AR')} />
               </Grid>
             ) : (
               <></>
@@ -234,4 +234,4 @@ function ClienteDetailView() {
   )
 }
 
-export default ClienteDetailView
+export default IIPPDetailView

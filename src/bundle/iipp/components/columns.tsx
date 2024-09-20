@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material'
 import { GridColumns, GridRenderCellParams } from '@mui/x-data-grid'
-import EstadoComponent from 'src/@core/components/EstadoComponent'
 import VerDetalleComponent from 'src/@core/components/VerDetalleComponent'
+import { formatDate } from 'src/@core/utils'
 
 export const columnsClientes: GridColumns = [
   {
@@ -44,7 +44,9 @@ export const columnsClientes: GridColumns = [
     headerAlign: 'center',
     align: 'center',
     renderCell: (params: GridRenderCellParams) => (
-      <EstadoComponent estado={params?.row?.fecha_alta ? params?.row?.fecha_alta : 'Sin dato'} />
+      <Typography variant='body2' sx={{ color: 'text.primary' }}>
+        {params.row.fecha_alta ? formatDate(params.row.fecha_alta, 'es-AR') : 'Sin datos'}
+      </Typography>
     )
   },
   {

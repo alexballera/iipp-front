@@ -84,7 +84,6 @@ class CustomDocument extends Document {
           <link rel='icon' type='image/png' sizes='96x96' href='/images/icons/favicon-96x96.png' />
           <link rel='icon' type='image/png' sizes='16x16' href='/images/icons/favicon-16x16.png' />
 
-
           <meta name='application-name' content='IIPP COMAFI' />
           <meta name='apple-mobile-web-app-capable' content='yes' />
           <meta name='apple-mobile-web-app-status-bar-style' content='default' />

@@ -12,7 +12,7 @@ import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
 
 import { AccountTie } from 'mdi-material-ui'
-import ClienteDetailView from 'src/bundle/iipp/components/ClienteDetailView'
+import IIPPDetailView from 'src/bundle/iipp/components/IIPPDetailView'
 import { useGetIippByIdQuery } from 'src/bundle/iipp/data/iippApiService'
 import { setIipp } from 'src/bundle/iipp/data/iippStore'
 
@@ -60,7 +60,7 @@ function IippDetailPage() {
           <>
             <Grid container spacing={6}>
               <Grid item xs={12}>
-                <ClienteDetailView />
+                <IIPPDetailView />
               </Grid>
             </Grid>
           </>
