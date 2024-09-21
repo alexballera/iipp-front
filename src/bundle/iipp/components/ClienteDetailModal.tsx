@@ -6,7 +6,7 @@ import { Box, Button, CardContent, Grid, Paper, Stack } from '@mui/material'
 import { EyeOutline } from 'mdi-material-ui'
 
 // * Store, Types & Hooks Imports
-import { ClienteDetalleState, NumeroCuenta, TipoDocumento } from '../domain/iippModel'
+import { ClienteDetalleState, NumeroCuenta, TipoDocumento } from '../domain/clientesModel'
 
 // * Customs components
 import CustomTooltip from 'src/@core/components/CustomTooltip'
@@ -60,6 +60,9 @@ function ClienteDetailModal(props: ClienteDetalleState) {
                 valor={`${obtenerDocumentoPorJerarquia()?.tipo} - ${obtenerDocumentoPorJerarquia()?.valor}`}
               />
               {data?.telefono && <DatoDetalle nombre='Número Teléfono' valor={data?.telefono} />}
+              {data?.tipo_cliente && (
+                <DatoDetalle nombre='Tipo Cliente' valor={data?.tipo_cliente} />
+              )}
               <DatoDetalle
                 nombre='Cliente Banco'
                 valor={data?.cliente_banco ? 'Cliente' : 'No cliente'}

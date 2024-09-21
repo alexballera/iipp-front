@@ -16,6 +16,7 @@ import {
 
 // ** Third Party Imports
 import { Controller } from 'react-hook-form'
+import { TipoClienteEnum } from '../../domain/clientesModel'
 
 //** Customs Components Imports */
 import TitleSectionForm from 'src/@core/components/TitleSectionForm'
@@ -35,6 +36,40 @@ function ClienteTipoForm(props: Props) {
     <Grid container spacing={5}>
       <Grid item xs={12} sx={{ mt: '20px' }}>
         <TitleSectionForm text='Tipo Cliente' />
+      </Grid>
+
+      {/** tipo_cliente */}
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth>
+          <InputLabel id='tipo_cliente' error={Boolean(errors.tipo_cliente)} htmlFor='tipo_cliente'>
+            Tipo cliente *
+          </InputLabel>
+          <Controller
+            name='tipo_cliente'
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { value, onChange } }) => (
+              <Select
+                value={value}
+                label='Tipo cliente *'
+                id='controlled-select'
+                onChange={onChange}
+                labelId='controlled-select-label'
+              >
+                {Object.values(TipoClienteEnum).map(value => (
+                  <MenuItem key={value} value={value}>
+                    {value}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+          {errors.tipo_cliente && (
+            <FormHelperText sx={{ color: 'error.main' }} id='validation-schema-tipo_cliente'>
+              {errors.tipo_cliente.message}
+            </FormHelperText>
+          )}
+        </FormControl>
       </Grid>
 
       {/** idioma_factura */}

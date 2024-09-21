@@ -1,6 +1,6 @@
 // ** Base Imports
 import { useRouter } from 'next/router'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 
 // ** MUI Imports
 import { Grid, SelectChangeEvent } from '@mui/material'
@@ -12,19 +12,17 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
 //** Types, Enums, Utils & Constants Imports */
-import { useSelector } from 'src/@core/configs/store'
+import { useDispatch, useSelector } from 'src/@core/configs/store'
 import { APP_ROUTE, ARCHIVO_ROUTE, ONLY_NUMBERS } from 'src/@core/constants'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum, CategoriaArchivoEnum, UbicacionDocumentoEnum } from 'src/@core/enums'
 import { FetchErrorTypes } from 'src/@core/types'
 import {
-  direccionSchema,
   removeSlashesAndScores,
   showApiErrorMessage,
   showApiSuccessMessage,
   showMessageError
 } from 'src/@core/utils'
-import useClientesHook from 'src/bundle/iipp/components/useClientesHook'
 
 //** Customs Components Imports */
 import { AccountTie } from 'mdi-material-ui'
@@ -36,17 +34,12 @@ import MultipartUpload from 'src/@core/lib/MultipartUpload'
 import ClienteArchivoForm from 'src/bundle/iipp/components/form/ClienteArchivoForm'
 import ClienteContactoForm from 'src/bundle/iipp/components/form/ClienteContactoForm'
 import ClienteCuentaForm from 'src/bundle/iipp/components/form/ClienteCuentaForm'
-import ClienteDireccionForm from 'src/bundle/iipp/components/form/ClienteDireccionForm'
 import ClienteImpuestosForm from 'src/bundle/iipp/components/form/ClienteImpuestosForm'
 import ClienteProductosForm from 'src/bundle/iipp/components/form/ClienteProductosForm'
 import ClienteTipoForm from 'src/bundle/iipp/components/form/ClienteTipoForm'
-import { useCreateIippMutation, useUpdateIippMutation } from 'src/bundle/iipp/data/iippApiService'
-import {
-  ClienteDTO,
-  clienteIS,
-  DireccionIS,
-  ImpuestoTypesIS
-} from 'src/bundle/iipp/domain/iippModel'
+import useClientesHook from 'src/bundle/iipp/components/useClientesHook'
+import { getClienteByDocumentNumber, useCreateClienteMutation, useUpdateClienteMutation } from 'src/bundle/iipp/data/clientesApiService'
+import { ClienteDatosExterno, ClienteDTO, clienteIS, ImpuestoTypesIS, ProductosEnum } from 'src/bundle/iipp/domain/clientesModel'
 import { Archivo, ImpuestoTypes } from 'src/bundle/shared/domain'
 
 const schema = yup.object().shape({
@@ -58,16 +51,16 @@ const schema = yup.object().shape({
   idioma_factura: yup.string(),
   tipo_cliente: yup.string(),
   moneda: yup.string(),
-  documento: yup.string(),
-  ...direccionSchema
+  documento: yup.string()
 })
 
 function FormClientesPage() {
   //** States */
-  const [codigoPostal, setCodigoPostal] = useState('')
   const [errorArchivo, setErrorArchivo] = useState<boolean>(false)
+  const [documento, setDocumento] = useState<string>('')
   const [documentos, setDocumentos] = useState<string[]>([])
   const [showCustomType, setShowCustomType] = useState(false)
+  const [isValidDocumento, setIsValidDocumento] = useState<boolean>(false)
   const [openDateRangeImpuesto, setOpenDateRangeImpuesto] = useState<boolean>(false)
   const [openDateRangePercepcion, setOpenDateRangePercepcion] = useState<boolean>(false)
   const [selectionDateRangeImpuesto, setSelectionDateRangeImpuesto] =
@@ -99,11 +92,12 @@ function FormClientesPage() {
   })
   const URL = `${process.env.NEXT_PUBLIC_API_URL}${APP_ROUTE}${ARCHIVO_ROUTE}`
 
-  const [crearCliente, { isLoading: isCreatingCliente }] = useCreateIippMutation()
-  const [updateCliente, { isLoading: isUpdatingCliente }] = useUpdateIippMutation()
+  const [crearCliente, { isLoading: isCreatingCliente }] = useCreateClienteMutation()
+  const [updateCliente, { isLoading: isUpdatingCliente }] = useUpdateClienteMutation()
 
   //** Hooks */
   const router = useRouter()
+  const dispatch = useDispatch()
   const { state: appState, setState: setAppState } = useAppContext()
   const {
     control,
@@ -111,7 +105,7 @@ function FormClientesPage() {
     watch,
     register,
     setError,
-    resetField,
+    clearErrors,
     setValue,
     reset,
     getValues,
@@ -123,61 +117,40 @@ function FormClientesPage() {
   })
 
   const {
-    IIPP: { iipp }
+    CLIENTES: { cliente }
   } = useSelector(state => state)
 
-  const { getBreadCrumb } = useClientesHook(appState.accion, iipp?.nombre || '')
+  const { getBreadCrumb } = useClientesHook(appState.accion, cliente?.nombre || '')
 
   const watchArchivo = watch().archivo
   const descripcionArchivo = watch('archivos.0.descripcion') || ''
-  const addressField = ['direccion.pais', 'direccion.provincia', 'direccion.localidad']
-  const watchAddressFields = watch(addressField as any[])
   const { params } = router.query
 
   useEffect(() => {
-    if (appState.accion === AccionesEnum.EDITAR_IIPP) {
-      reset({ ...iipp })
-      setImpuestos(iipp.impuestos || [])
-      setPercepciones(iipp.percepciones || [])
-      setDocumentos(iipp.numero_documento!.map(doc => doc.valor) || [])
-      setCorreos(iipp.emails || [])
-      if (iipp.archivos) {
-        setArchivos(iipp.archivos)
+    if (appState.accion === AccionesEnum.EDITAR_CLIENTE) {
+      reset({ ...cliente })
+      setImpuestos(cliente.impuestos || [])
+      setPercepciones(cliente.percepciones || [])
+      setDocumentos(cliente.numero_documento!.map(doc => doc.valor) || [])
+      setCorreos(cliente.emails || [])
+      if (cliente.archivos) {
+        setArchivos(cliente.archivos)
       }
     }
     setState(prevState => ({
       ...prevState,
-      isClienteBanco: iipp.cliente_banco || false,
+      isClienteBanco: cliente.cliente_banco || false,
+      fideicomisos: cliente?.productos?.includes(ProductosEnum.FIDEICOMISOS) || false,
+      cedears: cliente?.productos?.includes(ProductosEnum.CEDEARS) || false,
+      custodia: cliente?.productos?.includes(ProductosEnum.CUSTODIA) || false,
+      fondos: cliente?.productos?.includes(ProductosEnum.FONDOS) || false,
       loading: false,
       loadingArchivo: false,
       loadingInput: false,
       categoriaArchivo: CategoriaArchivoEnum.CLIENTE_CONSTANCIA_CUIT
     }))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [iipp, appState])
-
-  useEffect(() => {
-    const subscription = watch((_value, { name }) => {
-      const field = addressField.find(f => f === name)
-      if (!field) return
-      switch (field) {
-        case 'direccion.pais':
-          resetField('direccion.provincia')
-          break
-        case 'direccion.provincia':
-          resetField('direccion.localidad')
-          break
-        case 'direccion.localidad':
-          resetField('direccion.codigo_postal')
-          break
-        default:
-          break
-      }
-    })
-
-    return () => subscription.unsubscribe()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [watchAddressFields])
+  }, [cliente, appState])
 
   useEffect(() => {
     const getCategoriaArchivo = () => {
@@ -252,6 +225,115 @@ function FormClientesPage() {
     setArchivos([])
     setCorreos([])
   }
+
+  const onBlurInputDocumento = useCallback(() => {
+    if (documento?.length) {
+      const validarDocumentoCliente = dispatch(getClienteByDocumentNumber.initiate(documento))
+
+      setState({
+        ...state,
+        loadingInput: true
+      })
+
+      const handleAgregarDocumento = (doc: string) => {
+        if (!doc || doc === '') {
+          setError('documento', {
+            type: 'manual',
+            message: 'Debes llenar el campo'
+          })
+
+          return
+        }
+
+        setDocumentos(prev => [...prev, doc])
+
+        reset({ ...getValues(), documento: '' })
+      }
+
+      validarDocumentoCliente
+        .unwrap()
+        .then((res: ClienteDatosExterno) => {
+          if (res) {
+            setTimeout(() => {
+              setIsValidDocumento(true)
+              const updatedData = {
+                nombre: res.datos_personales.razon_social,
+                email: res.emails[0]?.email || '',
+                habilitado: res.datos_personales?.habilitado,
+                impuesto: {
+                  nombre: 'IVA',
+                  condicion: res.datos_impositivos?.iva?.condicion,
+                  alicuota: res.datos_impositivos?.iva?.percepcion,
+                  jurisdiccion: '',
+                  habilitado: true,
+                  fecha_desde: '',
+                  fecha_hasta: '',
+                  cuenta_contable: 0
+                },
+                percepcion: {
+                  nombre: 'IIBB',
+                  condicion: res.datos_impositivos?.ingresos_brutos?.condicion,
+                  alicuota: res.datos_impositivos?.iva?.percepcion,
+                  jurisdiccion: '',
+                  habilitado: true,
+                  fecha_desde: '',
+                  fecha_hasta: '',
+                  cuenta_contable: 0
+                }
+              }
+
+              setState({
+                ...state,
+                isClienteBanco: true
+              })
+              reset({
+                ...updatedData,
+                documento: documento || ''
+              })
+            }, 2000)
+          }
+        })
+        .catch((error: FetchErrorTypes) => {
+          setIsValidDocumento(false)
+
+          setError('numero_documento', {
+            type: 'manual',
+            message:
+              error.data?.error?.message === 'Not Found' ||
+                error.data?.error?.message === 'Bad Request'
+                ? 'Documento no encontrado'
+                : error.data?.error?.message
+          })
+
+          if (appState.accion === AccionesEnum.CREAR_CLIENTE) {
+            setTimeout(() => {
+              reset({ ...clienteIS, archivo: null })
+              setState({
+                ...state,
+                fideicomisos: false,
+                cedears: false,
+                custodia: false,
+                fondos: false
+              })
+            }, 3000)
+          }
+        })
+        .finally(() => {
+          validarDocumentoCliente.unsubscribe()
+
+          setState({
+            ...state,
+            loadingInput: false
+          })
+
+          setTimeout(() => {
+            setIsValidDocumento(false)
+            clearErrors('numero_documento')
+            handleAgregarDocumento(documento)
+          }, 3000)
+        })
+    }
+  }, [dispatch, documento, reset, state, setError, clearErrors, getValues, appState])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setState({
@@ -492,21 +574,24 @@ function FormClientesPage() {
       return
     }
 
+    const productos = []
+    if (state.cedears) productos.push(ProductosEnum.CEDEARS)
+    if (state.custodia) productos.push(ProductosEnum.CUSTODIA)
+    if (state.fideicomisos) productos.push(ProductosEnum.FIDEICOMISOS)
+    if (state.fondos) productos.push(ProductosEnum.FONDOS)
+
     const body = {
       ...dataForm,
       emails: correos,
       cliente_banco: state.isClienteBanco,
-      direccion: {
-        ...dataForm.direccion,
-        codigo_postal: codigoPostal
-      },
       impuestos,
       percepciones,
+      productos,
       archivos,
       documentos
     }
 
-    if (appState.accion === AccionesEnum.EDITAR_IIPP) {
+    if (appState.accion === AccionesEnum.EDITAR_CLIENTE) {
       updateCliente(body)
         .unwrap()
         .then(() => {
@@ -527,11 +612,7 @@ function FormClientesPage() {
 
   return (
     <>
-      <BreadcrumbsComponent
-        firstBreadcrumb='iipp'
-        icon={<AccountTie fontSize='small' />}
-        breadCrumbItems={getBreadCrumb()}
-      />
+      <BreadcrumbsComponent firstBreadcrumb='IIPP' icon={<AccountTie fontSize='small' />} breadCrumbItems={getBreadCrumb()} />
       <FormLayout title={removeSlashesAndScores(params?.[0] || '')}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ClienteCuentaForm
@@ -541,7 +622,10 @@ function FormClientesPage() {
             loading={state.loading}
             control={control}
             errors={errors}
+            isValidDocumento={isValidDocumento}
             loadingInput={state.loadingInput}
+            onBlur={onBlurInputDocumento}
+            setDocumento={setDocumento}
             documentos={documentos}
             setDocumentos={setDocumentos}
           />
@@ -557,18 +641,7 @@ function FormClientesPage() {
             errors={errors}
             loadingInput={state.loadingInput}
             setCorreos={setCorreos}
-            correos={iipp.emails || []}
-          />
-
-          <ClienteDireccionForm
-            control={control}
-            errors={errors}
-            loadingInput={state.loadingInput}
-            handleCambioPais={() => setCodigoPostal('')}
-            direccion={watch().direccion || DireccionIS}
-            codigoPostal={codigoPostal}
-            setCodigoPostal={setCodigoPostal}
-            disabledLocalidad={watch().direccion?.provincia === '' || state.loadingInput}
+            correos={cliente.emails || []}
           />
 
           <ClienteTipoForm

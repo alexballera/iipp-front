@@ -2,25 +2,44 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
 
 //** MUI Imports */
-import { Card, CardContent, CardHeader, Grid, IconButton, Stack, Typography } from '@mui/material'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Grid,
+  IconButton,
+  Stack,
+  Switch,
+  Typography
+} from '@mui/material'
+import Alert from '@mui/material/Alert'
 
 //** Custom Components Imports */
 import { ClipboardText, PencilOutline } from 'mdi-material-ui'
 import { useRouter } from 'next/router'
 import CustomTooltip from 'src/@core/components/CustomTooltip'
+import Loader from 'src/@core/components/Loader'
+import ModalConfirmacion from 'src/@core/components/ModalConfirmacion/index '
 import ShowDataLabel from 'src/@core/components/ShowDataLabel'
 import CustomChip from 'src/@core/components/mui/chip'
 import FallbackSpinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum } from 'src/@core/enums'
-import { formatDate, showApiErrorMessage, showArrayComma } from 'src/@core/utils'
+import { FetchErrorTypes } from 'src/@core/types'
+import {
+  showApiErrorMessage,
+  showApiSuccessMessage,
+  showArrayComma,
+  showMessageError
+} from 'src/@core/utils'
 import { MenuItemsAccion } from 'src/bundle/shared/domain'
-import { useGetIippByIdQuery } from '../data/iippApiService'
-import { setIipp } from '../data/iippStore'
-import { NumeroCuenta, TipoDocumento } from '../domain/iippModel'
+import { useDisableClienteMutation, useGetClienteByIdQuery } from '../data/clientesApiService'
+import { setCliente } from '../data/clientesStore'
+import { NumeroCuenta, TipoDocumento } from '../domain/clientesModel'
 
-function IIPPDetailView() {
+function ClienteDetailView() {
+  const [openModal, setOpenModal] = useState(false)
   const [tooltipText, setTooltipText] = useState<string>('Copiar')
 
   //** Hooks */
@@ -31,12 +50,14 @@ function IIPPDetailView() {
   const {
     data: cliente,
     isSuccess,
+    refetch,
     isLoading: isLoadingCliente
-  } = useGetIippByIdQuery(id?.toString() || '')
+  } = useGetClienteByIdQuery(id?.toString() || '')
+  const [disableCliente, { isLoading: isChangingClientState }] = useDisableClienteMutation()
   const { setState, state } = useAppContext()
 
   useEffect(() => {
-    if (isSuccess) dispatch(setIipp(cliente))
+    if (isSuccess) dispatch(setCliente(cliente))
   }, [cliente, dispatch, isSuccess])
 
   const obtenerDocumentoPorJerarquia = (): NumeroCuenta | undefined => {
@@ -56,18 +77,60 @@ function IIPPDetailView() {
     }, 2000)
   }
 
+  const handleDeshabilitarCliente = () => {
+    if (cliente) {
+      const estadoValue = !cliente.habilitado
+
+      disableCliente(cliente)
+        .unwrap()
+        .then(() => {
+          refetch()
+          const mensaje = estadoValue
+            ? `${cliente.nombre} se habilitó correctamente`
+            : `${cliente.nombre} se deshabilitó correctamente`
+          showApiSuccessMessage(mensaje)
+          setOpenModal(false)
+        })
+        .catch((error: FetchErrorTypes) => showMessageError(error))
+    }
+  }
+
   const handleEditarCliente = useCallback(() => {
     setState({
       ...state,
-      accion: AccionesEnum.EDITAR_IIPP
+      accion: AccionesEnum.EDITAR_CLIENTE
     })
 
-    router.push(`form/${AccionesEnum.EDITAR_IIPP}`)
+    router.push(`form/${AccionesEnum.EDITAR_CLIENTE}`)
   }, [router, setState, state])
+
+  const handleConfirmarDeshabilitar = () => {
+    setOpenModal(true)
+  }
 
   if (isLoadingCliente) return <FallbackSpinner />
 
   const menuItems: MenuItemsAccion[] = [
+    {
+      icon: (
+        <>
+          {isChangingClientState || isLoadingCliente ? (
+            <Loader height='150' size={30} />
+          ) : (
+            <Switch
+              checked={cliente?.habilitado}
+              onChange={() => handleConfirmarDeshabilitar()}
+              inputProps={{ 'aria-label': 'controlled' }}
+              name={cliente?.nombre}
+              size='small'
+            />
+          )}
+        </>
+      ),
+      title: cliente?.habilitado ? 'Deshabilitar' : 'Habilitar',
+      actions: null,
+      show: true
+    },
     {
       icon: <PencilOutline fontSize='small' color='success' sx={{ mr: 1 }} />,
       title: 'Editar cliente',
@@ -80,7 +143,7 @@ function IIPPDetailView() {
     <>
       <Card>
         <CardHeader
-          title='Detalle de la instrucción permanente'
+          title='Detalle del Cliente'
           action={
             <Stack direction='row' alignItems='center'>
               {menuItems.map(({ title, icon, actions }, i) => (
@@ -138,9 +201,9 @@ function IIPPDetailView() {
             ) : (
               <></>
             )}
-            {cliente?.fecha_alta ? (
+            {cliente?.email ? (
               <Grid item xs={12} sm={3}>
-                <ShowDataLabel label='Fecha alta' data={formatDate(cliente.fecha_alta, 'es-AR')} />
+                <ShowDataLabel label='Email' data={cliente.email} />
               </Grid>
             ) : (
               <></>
@@ -169,6 +232,13 @@ function IIPPDetailView() {
             {cliente?.moneda ? (
               <Grid item xs={12} sm={3}>
                 <ShowDataLabel label='Moneda' data={cliente.moneda} />
+              </Grid>
+            ) : (
+              <></>
+            )}
+            {cliente?.tipo_cliente ? (
+              <Grid item xs={12} sm={3}>
+                <ShowDataLabel label='Tipo cliente' data={cliente?.tipo_cliente} />
               </Grid>
             ) : (
               <></>
@@ -226,12 +296,28 @@ function IIPPDetailView() {
                   />
                 }
               />
+              <ModalConfirmacion
+                open={openModal}
+                onClose={() => setOpenModal(false)}
+                title={`CONFIRMA ${
+                  cliente?.habilitado ? 'DESHABILITAR' : 'HABILITAR'
+                } ${cliente?.nombre?.toUpperCase()}`}
+                onClick={handleDeshabilitarCliente}
+                loading={isChangingClientState}
+              />
             </Grid>
           </Grid>
         </CardContent>
       </Card>
+      {cliente?.datos_incompletos && cliente.datos_incompletos.length > 0 ? (
+        <Alert variant='outlined' severity='error' sx={{ mt: 4 }}>
+          Los datos faltantes son {cliente.datos_incompletos.join(', ')}.
+        </Alert>
+      ) : (
+        <></>
+      )}
     </>
   )
 }
 
-export default IIPPDetailView
+export default ClienteDetailView

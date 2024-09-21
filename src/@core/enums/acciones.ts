@@ -1,6 +1,6 @@
 export enum AccionesEnum {
-  CREAR_IIPP = 'CREAR_IIPP',
-  EDITAR_IIPP = 'EDITAR_IIPP',
+  CREAR_CLIENTE = 'CREAR_CLIENTE',
+  EDITAR_CLIENTE = 'EDITAR_CLIENTE',
 
   // para roles
   CREAR = 'CREAR',

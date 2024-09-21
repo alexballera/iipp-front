@@ -7,7 +7,7 @@ function useClientesHook(accion: string, nombre: string) {
   const breadCrumbCrear = [
     {
       id: '01',
-      text: AccionesEnum.CREAR_IIPP
+      text: AccionesEnum.CREAR_CLIENTE
     }
   ]
 
@@ -19,13 +19,13 @@ function useClientesHook(accion: string, nombre: string) {
     },
     {
       id: '02',
-      text: AccionesEnum.EDITAR_IIPP
+      text: AccionesEnum.EDITAR_CLIENTE
     }
   ]
 
   const getBreadCrumb = () => {
-    if (accion === AccionesEnum.CREAR_IIPP) return breadCrumbCrear
-    if (accion === AccionesEnum.EDITAR_IIPP) return breadCrumbEditar
+    if (accion === AccionesEnum.CREAR_CLIENTE) return breadCrumbCrear
+    if (accion === AccionesEnum.EDITAR_CLIENTE) return breadCrumbEditar
 
     return []
   }

@@ -16,14 +16,18 @@ type Props = {
   listSelected: string[]
   loading: boolean
   loadingInput: boolean
+  isValidDocumento: boolean
   control: any
+  onBlur: () => void
   errors: any
+  setDocumento: Dispatch<SetStateAction<string>>
   documentos: string[]
   setDocumentos: Dispatch<SetStateAction<string[]>>
 }
 
 function ClienteCuentaForm(props: Props) {
   const {
+    isValidDocumento,
     disabled,
     isError,
     listSelected,
@@ -31,6 +35,8 @@ function ClienteCuentaForm(props: Props) {
     control,
     loadingInput,
     errors,
+    onBlur,
+    setDocumento,
     documentos,
     setDocumentos
   } = props
@@ -59,12 +65,15 @@ function ClienteCuentaForm(props: Props) {
               name='documento'
               control={control}
               render={({ field }) => {
+                setDocumento(field.value || '')
+
                 return (
                   <TextField
                     {...field}
                     label='Número documento, CUIL, CUIT, Pasaporte'
                     placeholder='Ingrese el número de documento, CUIL, CUIT, Pasaporte'
                     aria-describedby='validation-schema-first-name'
+                    onBlur={onBlur}
                     error={Boolean(errors.documento)}
                     InputProps={{
                       endAdornment: (
@@ -85,6 +94,11 @@ function ClienteCuentaForm(props: Props) {
             {errors.numero_documento && (
               <FormHelperText sx={{ color: 'error.main' }} id='validation-schema-documento'>
                 {errors.numero_documento?.message}
+              </FormHelperText>
+            )}
+            {isValidDocumento && (
+              <FormHelperText sx={{ color: 'success.main' }} id='validation-schema-documento'>
+                El documento es valido
               </FormHelperText>
             )}
           </FormControl>

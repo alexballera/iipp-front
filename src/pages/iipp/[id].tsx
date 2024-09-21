@@ -12,9 +12,9 @@ import Spinner from 'src/@core/components/spinner'
 import { useDispatch } from 'src/@core/configs/store'
 
 import { AccountTie } from 'mdi-material-ui'
-import IIPPDetailView from 'src/bundle/iipp/components/IIPPDetailView'
-import { useGetIippByIdQuery } from 'src/bundle/iipp/data/iippApiService'
-import { setIipp } from 'src/bundle/iipp/data/iippStore'
+import ClienteDetailView from 'src/bundle/iipp/components/ClienteDetailView'
+import { useGetClienteByIdQuery } from 'src/bundle/iipp/data/clientesApiService'
+import { setCliente } from 'src/bundle/iipp/data/clientesStore'
 
 function IippDetailPage() {
   //** Hooks */
@@ -24,12 +24,12 @@ function IippDetailPage() {
   let { id } = router.query
   id = id?.toString() || ''
 
-  const { data: cliente, refetch, isLoading, isError } = useGetIippByIdQuery(id || '')
+  const { data: cliente, refetch, isLoading, isError } = useGetClienteByIdQuery(id || '')
 
   //** Effects */
   useEffect(() => {
     if (cliente) {
-      dispatch(setIipp(cliente))
+      dispatch(setCliente(cliente))
     }
   }, [dispatch, cliente])
 
@@ -60,7 +60,7 @@ function IippDetailPage() {
           <>
             <Grid container spacing={6}>
               <Grid item xs={12}>
-                <IIPPDetailView />
+                <ClienteDetailView />
               </Grid>
             </Grid>
           </>

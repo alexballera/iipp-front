@@ -14,10 +14,10 @@ import { IIPP_ROUTE } from 'src/@core/constants'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum } from 'src/@core/enums'
 import { ElasticSearchDataIS, PaginationData, PaginationDataIS, QueryParams } from 'src/@core/types'
-import IippView from 'src/bundle/iipp/components/IippView'
-import { useFetchIippQuery } from 'src/bundle/iipp/data/iippApiService'
-import { setIippElasticSearch, setIippList } from 'src/bundle/iipp/data/iippStore'
-import { IIPPFiltrosDTO, IIPPFiltrosIS } from 'src/bundle/iipp/domain/iippModel'
+import ClientesView from 'src/bundle/iipp/components/ClientesView'
+import { useFetchClientesQuery } from 'src/bundle/iipp/data/clientesApiService'
+import { setClientesElasticSearch, setClientesList } from 'src/bundle/iipp/data/clientesStore'
+import { ClienteFiltrosDTO, ClientesFiltrosIS } from 'src/bundle/iipp/domain/clientesModel'
 
 function IippPage() {
   const [paginationData, setPaginationData] = useState<PaginationData>(PaginationDataIS)
@@ -26,11 +26,11 @@ function IippPage() {
   const router = useRouter()
   const dispatch = useDispatch()
   const { loading, setLoading, setState, state } = useAppContext()
-  const [queryParams] = useState<IIPPFiltrosDTO>(IIPPFiltrosIS)
+  const [queryParams] = useState<ClienteFiltrosDTO>(ClientesFiltrosIS)
 
   const qp = queryParams as QueryParams
 
-  const { data, isLoading, isFetching, refetch } = useFetchIippQuery({
+  const { data, isLoading, isFetching, refetch } = useFetchClientesQuery({
     queryParams: qp,
     paginationData
   })
@@ -41,8 +41,8 @@ function IippPage() {
 
   useEffect(() => {
     if (data) {
-      dispatch(setIippList(data.registros))
-      dispatch(setIippElasticSearch(data))
+      dispatch(setClientesList(data.registros))
+      dispatch(setClientesElasticSearch(data))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
@@ -50,9 +50,9 @@ function IippPage() {
   const handleCrear = () => {
     setState({
       ...state,
-      accion: AccionesEnum.CREAR_IIPP
+      accion: AccionesEnum.CREAR_CLIENTE
     })
-    router.push(`${IIPP_ROUTE}/form/${AccionesEnum.CREAR_IIPP}`)
+    router.push(`${IIPP_ROUTE}/form/${AccionesEnum.CREAR_CLIENTE}`)
   }
 
   return (
@@ -69,7 +69,7 @@ function IippPage() {
               </Button>
             }
           />
-          <IippView
+          <ClientesView
             data={data || ElasticSearchDataIS}
             isLoading={loading}
             isFetching={loading}
