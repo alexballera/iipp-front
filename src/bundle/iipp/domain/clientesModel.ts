@@ -108,40 +108,6 @@ export enum ProductosEnum {
   FONDOS = 'FONDOS'
 }
 
-export type ParametriaComercialDTO = {
-  id: string
-  producto: any
-  concepto: any
-  aplicacion: AplicacionParametria
-
-  // cuenta_contable: string
-  // impuesto: string
-  // moneda: string
-  // calculo: string
-  cliente_id: string
-  fecha_alta: string
-  precio?: number
-  costo?: number
-  maximo?: number
-  minimo?: number
-  monto_deuda?: number
-  fecha_vigencia_inicio?: string
-  fecha_vigencia_fin?: string
-}
-
-export type CrearParametriaComercialDTO = Omit<
-  ParametriaComercialDTO,
-  'fecha_alta' | 'fecha_modificacion'
-> & {
-  cliente_id: string
-}
-
-export type ModificarParametriaComercialDTO = CrearParametriaComercialDTO
-export type EliminarParametriaComercialDTO = {
-  cliente_id: string
-  id: string
-}
-
 export const TipoDocumento = ['CUIT', 'CUIL', 'Código CNV', 'DNI', 'PASAPORTE']
 
 export interface EmailDTO {
@@ -212,7 +178,6 @@ export interface ClienteDTO {
   impuestos?: ImpuestoTypes[]
   percepciones?: ImpuestoTypes[]
   datos_incompletos?: string[]
-  parametrias?: ParametriaComercialDTO[]
   archivos?: Archivo[]
   productos?: string[]
   minimo?: number
@@ -299,35 +264,6 @@ export const SumarioClienteIS: SumarioClienteDTO = {
   numero_documento: []
 }
 
-export const parametriaIS: ParametriaComercialDTO = {
-  id: '',
-  producto: '',
-  concepto: {
-    id: '',
-    nombre: '',
-    productos: [],
-    cuenta_contable: '',
-    impuesto: {
-      nombre: '',
-      alicuota: 0,
-      cuenta_contable: 0,
-      moneda: []
-    }
-  },
-  aplicacion: AplicacionParametria.CANTIDAD_OPERACIONES,
-
-  // cuenta_contable: '',
-  // impuesto: '',
-  // moneda: '',
-  // calculo: '',
-  fecha_alta: '',
-  cliente_id: '',
-  precio: 0,
-  costo: 0,
-  maximo: 0,
-  minimo: 0
-}
-
 export const DireccionIS = {
   pais: '',
   localidad: '',
@@ -372,7 +308,6 @@ export const clienteIS: ClienteDTO = {
   impuestos: [],
   percepciones: [],
   archivos: [],
-  parametrias: [],
   datos_incompletos: [],
   cliente_banco: true,
   productos: [],

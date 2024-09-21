@@ -12,7 +12,6 @@ import {
   Switch,
   Typography
 } from '@mui/material'
-import Alert from '@mui/material/Alert'
 
 //** Custom Components Imports */
 import { ClipboardText, PencilOutline } from 'mdi-material-ui'
@@ -309,13 +308,6 @@ function ClienteDetailView() {
           </Grid>
         </CardContent>
       </Card>
-      {cliente?.datos_incompletos && cliente.datos_incompletos.length > 0 ? (
-        <Alert variant='outlined' severity='error' sx={{ mt: 4 }}>
-          Los datos faltantes son {cliente.datos_incompletos.join(', ')}.
-        </Alert>
-      ) : (
-        <></>
-      )}
     </>
   )
 }

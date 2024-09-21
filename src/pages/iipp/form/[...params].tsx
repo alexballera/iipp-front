@@ -38,8 +38,18 @@ import ClienteImpuestosForm from 'src/bundle/iipp/components/form/ClienteImpuest
 import ClienteProductosForm from 'src/bundle/iipp/components/form/ClienteProductosForm'
 import ClienteTipoForm from 'src/bundle/iipp/components/form/ClienteTipoForm'
 import useClientesHook from 'src/bundle/iipp/components/useClientesHook'
-import { getClienteByDocumentNumber, useCreateClienteMutation, useUpdateClienteMutation } from 'src/bundle/iipp/data/clientesApiService'
-import { ClienteDatosExterno, ClienteDTO, clienteIS, ImpuestoTypesIS, ProductosEnum } from 'src/bundle/iipp/domain/clientesModel'
+import {
+  getClienteByDocumentNumber,
+  useCreateClienteMutation,
+  useUpdateClienteMutation
+} from 'src/bundle/iipp/data/clientesApiService'
+import {
+  ClienteDatosExterno,
+  ClienteDTO,
+  clienteIS,
+  ImpuestoTypesIS,
+  ProductosEnum
+} from 'src/bundle/iipp/domain/clientesModel'
 import { Archivo, ImpuestoTypes } from 'src/bundle/shared/domain'
 
 const schema = yup.object().shape({
@@ -300,7 +310,7 @@ function FormClientesPage() {
             type: 'manual',
             message:
               error.data?.error?.message === 'Not Found' ||
-                error.data?.error?.message === 'Bad Request'
+              error.data?.error?.message === 'Bad Request'
                 ? 'Documento no encontrado'
                 : error.data?.error?.message
           })
@@ -612,7 +622,11 @@ function FormClientesPage() {
 
   return (
     <>
-      <BreadcrumbsComponent firstBreadcrumb='IIPP' icon={<AccountTie fontSize='small' />} breadCrumbItems={getBreadCrumb()} />
+      <BreadcrumbsComponent
+        firstBreadcrumb='IIPP'
+        icon={<AccountTie fontSize='small' />}
+        breadCrumbItems={getBreadCrumb()}
+      />
       <FormLayout title={removeSlashesAndScores(params?.[0] || '')}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ClienteCuentaForm

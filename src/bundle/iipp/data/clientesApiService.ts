@@ -6,11 +6,7 @@ import {
   ClienteDTO,
   ClienteDatosExterno,
   CrearClienteDTO,
-  CrearParametriaComercialDTO,
-  EliminarParametriaComercialDTO,
-  ModificarClienteDTO,
-  ModificarParametriaComercialDTO,
-  ParametriaComercialDTO
+  ModificarClienteDTO
 } from '../domain/clientesModel'
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}${APP_ROUTE}`
@@ -74,28 +70,6 @@ export const clientesApi = createApi({
         url: `/cliente/datos-completos/${numero_documento}`,
         method: 'get'
       })
-    }),
-
-    // Create Parametria
-    createParametria: builder.mutation<ParametriaComercialDTO, CrearParametriaComercialDTO>({
-      query: body => ({ url: `/cliente/${body.cliente_id}/parametria`, method: 'post', body })
-    }),
-
-    // Edit Parametria
-    updateParametria: builder.mutation<ParametriaComercialDTO, ModificarParametriaComercialDTO>({
-      query: body => ({
-        url: `/cliente/${body.cliente_id}/parametria/${body.id}`,
-        method: 'put',
-        body
-      })
-    }),
-
-    // Delete Parametria
-    deleteParametria: builder.query<ParametriaComercialDTO, EliminarParametriaComercialDTO>({
-      query: body => ({
-        url: `/cliente/${body.cliente_id}/parametria/${body.id}`,
-        method: 'delete'
-      })
     })
   })
 })
@@ -106,10 +80,7 @@ export const {
   useGetClienteByIdQuery,
   useUpdateClienteMutation,
   useDisableClienteMutation,
-  useGetClienteByDocumentNumberQuery,
-  useCreateParametriaMutation,
-  useUpdateParametriaMutation,
-  useDeleteParametriaQuery
+  useGetClienteByDocumentNumberQuery
 } = clientesApi
 
 export const {
@@ -118,8 +89,5 @@ export const {
   createCliente,
   updateCliente,
   disableCliente,
-  getClienteByDocumentNumber,
-  createParametria,
-  updateParametria,
-  deleteParametria
+  getClienteByDocumentNumber
 } = clientesApi.endpoints
