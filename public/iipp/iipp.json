@@ -1,0 +1,1072 @@
+{
+  "total": 268,
+  "registros": [
+    {
+      "id": "30711754128",
+      "nombre": "javier lopez",
+      "cuenta": {
+        "caja_valores": "234234234",
+        "custodia_bony": "456040"
+      },
+      "numero_documento": [
+        {
+          "tipo": "CUIT",
+          "valor": "30711754128"
+        }
+      ],
+      "direccion": {
+        "piso": "",
+        "codigo_postal": "2824",
+        "oficina": "",
+        "numero": "345",
+        "calle": "Liniers",
+        "departamento": "",
+        "localidad": "ALMADA",
+        "provincia": "ENTRE RIOS",
+        "telefono": "",
+        "pais": "Argentina"
+      },
+      "emails": [
+        "prueba@gmail.com"
+      ],
+      "nombre_referente": "javier",
+      "telefono": "2345324",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-09-03T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "23532",
+          "habilitado": true,
+          "jurisdiccion": "Entre Ríos",
+          "nombre": "IVA",
+          "condicion": "4",
+          "fecha_hasta": "2024-09-13T03:00:00.000Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-09-02T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "345675",
+          "habilitado": true,
+          "jurisdiccion": "Mendoza",
+          "nombre": "iibb",
+          "condicion": "3",
+          "fecha_hasta": "2024-09-20T03:00:00.000Z"
+        }
+      ],
+      "parametrias": [],
+      "archivos": [],
+      "cliente_banco": true,
+      "cliente_completo": false,
+      "productos": [
+        "CUSTODIA"
+      ],
+      "minimo": {
+        "fecha_desde": "2024-09-05T03:00:00.000Z",
+        "monto": 5050234,
+        "fecha_hasta": "2024-09-20T03:00:00.000Z"
+      },
+      "fecha_alta": "2024-09-19T16:48:44.633Z",
+      "fecha_modificacion": "2024-09-20T17:22:09.687Z",
+      "habilitado": true,
+      "datos_incompletos": [
+        "Parametrias"
+      ]
+    },
+    {
+      "id": "25432879",
+      "nombre": "Lidia nova",
+      "cuenta": {
+        "caja_valores": "234232425",
+        "custodia_bony": "373056"
+      },
+      "numero_documento": [
+        {
+          "tipo": "DNI",
+          "valor": "25432879"
+        }
+      ],
+      "direccion": {
+        "piso": "",
+        "codigo_postal": "5411",
+        "oficina": "",
+        "numero": "234",
+        "calle": "liniers",
+        "departamento": "",
+        "localidad": "SANTA LUCIA",
+        "provincia": "SAN JUAN",
+        "telefono": "",
+        "pais": "Argentina"
+      },
+      "emails": [
+        "prueba@gmail.com"
+      ],
+      "nombre_referente": "Lidia",
+      "telefono": "3452373223",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-09-02T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "5673213",
+          "habilitado": true,
+          "jurisdiccion": "Entre Ríos",
+          "nombre": "IVA",
+          "condicion": "234",
+          "fecha_hasta": "2024-09-12T03:00:00.000Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-09-02T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "34643",
+          "habilitado": true,
+          "jurisdiccion": "Neuquén",
+          "nombre": "iibb",
+          "condicion": "3",
+          "fecha_hasta": "2024-09-21T03:00:00.000Z"
+        }
+      ],
+      "parametrias": [
+        {
+          "id": "3fe38b60-032e-4613-b1a8-763bdd87e4c2",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 0,
+              "cuenta_contable": 288383,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "7722238",
+            "fecha_alta": "2024-08-29T19:01:26.712Z",
+            "id_compuesto": "C-CUS-02",
+            "grupo": "COMISIONES",
+            "id": "a664fa1b-dddc-4b05-9eda-0227d7495ce5",
+            "habilitado": true,
+            "fecha_modificacion": "2024-09-03T17:27:00.251Z",
+            "nombre": "Transacciones de titulos",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "MONTO_TOTAL_DEUDA",
+          "fecha_alta": "2024-09-18T15:20:14.322Z",
+          "precio": 0,
+          "costo": "50000",
+          "maximo": 400000,
+          "minimo": 300000,
+          "fecha_vigencia_inicio": "2024-09-05T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-10T03:00:00.000Z"
+        }
+      ],
+      "archivos": [],
+      "cliente_banco": true,
+      "cliente_completo": true,
+      "productos": [
+        "CUSTODIA"
+      ],
+      "minimo": {
+        "fecha_desde": "2024-09-02T03:00:00.000Z",
+        "monto": 5000000,
+        "fecha_hasta": "2024-09-15T03:00:00.000Z"
+      },
+      "fecha_alta": "2024-09-17T18:46:15.891Z",
+      "fecha_modificacion": "2024-09-18T15:39:14.950Z",
+      "habilitado": true,
+      "datos_incompletos": []
+    },
+    {
+      "id": "30657893",
+      "nombre": "david white",
+      "cuenta": {
+        "caja_valores": "4356542",
+        "custodia_bony": "235880"
+      },
+      "numero_documento": [
+        {
+          "tipo": "DNI",
+          "valor": "30657893"
+        }
+      ],
+      "direccion": {
+        "piso": "",
+        "codigo_postal": "5425",
+        "oficina": "",
+        "numero": "456",
+        "calle": "Liniers",
+        "departamento": "",
+        "localidad": "RAWSON",
+        "provincia": "SAN JUAN",
+        "telefono": "",
+        "pais": "Argentina"
+      },
+      "emails": [
+        "prueba@gamil.com"
+      ],
+      "nombre_referente": "david",
+      "telefono": "234523123",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-09-03T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "6753232",
+          "habilitado": true,
+          "jurisdiccion": "Mendoza",
+          "nombre": "IVA",
+          "condicion": "3",
+          "fecha_hasta": "2024-09-12T03:00:00.000Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-09-03T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "34334333",
+          "habilitado": true,
+          "jurisdiccion": "Chaco",
+          "nombre": "IIBB",
+          "condicion": "6",
+          "fecha_hasta": "2024-09-19T03:00:00.000Z"
+        }
+      ],
+      "parametrias": [
+        {
+          "id": "14316be9-b5af-4c7f-aa5e-fda874543a60",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 21,
+              "cuenta_contable": 832883123,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "82382832",
+            "fecha_alta": "2024-08-29T19:00:59.131Z",
+            "id_compuesto": "C-CUS-01",
+            "grupo": "COMISIONES",
+            "id": "fceb36e1-64ec-4971-b76c-0eaa3b215abf",
+            "habilitado": true,
+            "fecha_modificacion": "2024-08-29T20:56:54.489Z",
+            "nombre": "Tranferencias en efectivo",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "MONTO_TOTAL_DEUDA",
+          "fecha_alta": "2024-09-18T17:26:21.275Z",
+          "precio": 0,
+          "costo": "50000",
+          "maximo": 3000,
+          "minimo": 4000,
+          "fecha_vigencia_inicio": "2024-09-10T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-15T03:00:00.000Z"
+        },
+        {
+          "id": "9d987dfe-9f28-4414-9147-02e4825af95a",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 21,
+              "cuenta_contable": 28824442,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "8821212",
+            "fecha_alta": "2024-08-29T19:01:53.152Z",
+            "id_compuesto": "C-CUS-03",
+            "grupo": "COMISIONES",
+            "id": "e2ddc3b8-da5e-40da-995a-dae827e039c8",
+            "habilitado": true,
+            "nombre": "Comisiones de Custodia BP",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "MONTO_TOTAL_DEUDA",
+          "fecha_alta": "2024-09-18T17:49:01.211Z",
+          "precio": 0,
+          "costo": "50000",
+          "maximo": 30000,
+          "minimo": 20000,
+          "fecha_vigencia_inicio": "2024-09-03T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-15T03:00:00.000Z"
+        }
+      ],
+      "archivos": [],
+      "cliente_banco": true,
+      "cliente_completo": true,
+      "productos": [
+        "CUSTODIA"
+      ],
+      "minimo": {
+        "fecha_desde": "2024-09-02T03:00:00.000Z",
+        "monto": 50000,
+        "fecha_hasta": "2024-09-14T03:00:00.000Z"
+      },
+      "fecha_alta": "2024-09-17T16:59:14.380Z",
+      "fecha_modificacion": "2024-09-18T17:25:09.160Z",
+      "habilitado": true,
+      "datos_incompletos": []
+    },
+    {
+      "id": "30675610126",
+      "nombre": "Franco price",
+      "cuenta": {
+        "caja_valores": "234234234",
+        "custodia_bony": "43434343"
+      },
+      "numero_documento": [
+        {
+          "tipo": "CUIT",
+          "valor": "30675610126"
+        }
+      ],
+      "direccion": {
+        "piso": "",
+        "codigo_postal": "5310",
+        "oficina": "",
+        "numero": "342",
+        "calle": "Liniers",
+        "departamento": "",
+        "localidad": "AIMOGASTA",
+        "provincia": "LA RIOJA",
+        "telefono": "",
+        "pais": "Argentina"
+      },
+      "emails": [
+        "prueba@gmail.com"
+      ],
+      "nombre_referente": "Franco",
+      "telefono": "345267845",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-09-03T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "3456342",
+          "habilitado": true,
+          "jurisdiccion": "Jujuy",
+          "nombre": "IVA",
+          "condicion": "4",
+          "fecha_hasta": "2024-09-12T03:00:00.000Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-09-02T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "342323",
+          "habilitado": true,
+          "jurisdiccion": "Neuquén",
+          "nombre": "IIBB",
+          "condicion": "3",
+          "fecha_hasta": "2024-09-07T03:00:00.000Z"
+        }
+      ],
+      "parametrias": [],
+      "archivos": [],
+      "cliente_banco": true,
+      "cliente_completo": false,
+      "productos": [
+        "CUSTODIA"
+      ],
+      "fecha_alta": "2024-09-17T16:53:45.280Z",
+      "habilitado": true,
+      "datos_incompletos": [
+        "Parametrias"
+      ]
+    },
+    {
+      "id": "30715815252",
+      "nombre": "Juan ",
+      "cuenta": {
+        "caja_valores": "5745734",
+        "custodia_bony": "235880"
+      },
+      "numero_documento": [
+        {
+          "tipo": "CUIT",
+          "valor": "30715815252"
+        }
+      ],
+      "direccion": {
+        "piso": "",
+        "codigo_postal": "5423",
+        "oficina": "",
+        "numero": "65",
+        "calle": "call",
+        "departamento": "",
+        "localidad": "CAPITAN LAZO",
+        "provincia": "SAN JUAN",
+        "telefono": "",
+        "pais": "Argentina"
+      },
+      "emails": [],
+      "nombre_referente": "Juan",
+      "telefono": "345634743",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-09-02T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "346434",
+          "habilitado": true,
+          "jurisdiccion": "La Pampa",
+          "nombre": "IVA",
+          "condicion": "2",
+          "fecha_hasta": "2024-09-08T03:00:00.000Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-09-03T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "32523",
+          "habilitado": true,
+          "jurisdiccion": "Chubut",
+          "nombre": "IIBB",
+          "condicion": "7",
+          "fecha_hasta": "2024-09-13T03:00:00.000Z"
+        }
+      ],
+      "parametrias": [
+        {
+          "id": "bdaf5820-5a20-49d5-9ba4-eb1872f347ea",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 21,
+              "cuenta_contable": 28824442,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "8821212",
+            "fecha_alta": "2024-08-29T19:01:53.152Z",
+            "id_compuesto": "C-CUS-03",
+            "grupo": "COMISIONES",
+            "id": "e2ddc3b8-da5e-40da-995a-dae827e039c8",
+            "habilitado": true,
+            "nombre": "Comisiones de Custodia BP",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "CANTIDAD_OPERACIONES",
+          "fecha_alta": "2024-09-05T18:29:12.624Z",
+          "precio": 0,
+          "costo": "50000",
+          "maximo": 45677,
+          "minimo": 3400,
+          "fecha_vigencia_inicio": "2024-09-12T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-26T03:00:00.000Z"
+        },
+        {
+          "id": "b35101ac-4258-4eea-8167-a3d9f0a8861c",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 0,
+              "cuenta_contable": 288383,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "7722238",
+            "fecha_alta": "2024-08-29T19:01:26.712Z",
+            "id_compuesto": "C-CUS-02",
+            "grupo": "COMISIONES",
+            "id": "a664fa1b-dddc-4b05-9eda-0227d7495ce5",
+            "habilitado": true,
+            "fecha_modificacion": "2024-09-03T17:27:00.251Z",
+            "nombre": "Transacciones de titulos",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "MONTO_TOTAL_DEUDA",
+          "fecha_alta": "2024-09-05T18:29:34.866Z",
+          "precio": 0,
+          "costo": "40000",
+          "maximo": 30000,
+          "minimo": 10000,
+          "fecha_vigencia_inicio": "2024-09-10T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-27T03:00:00.000Z"
+        },
+        {
+          "id": "cb6c84f1-cac8-4f44-bb20-47f973fca3d3",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 21,
+              "cuenta_contable": 832883123,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "82382832",
+            "fecha_alta": "2024-08-29T19:00:59.131Z",
+            "id_compuesto": "C-CUS-01",
+            "grupo": "COMISIONES",
+            "id": "fceb36e1-64ec-4971-b76c-0eaa3b215abf",
+            "habilitado": true,
+            "fecha_modificacion": "2024-08-29T20:56:54.489Z",
+            "nombre": "Tranferencias en efectivo",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "TENENCIA_CLIENTE",
+          "fecha_alta": "2024-09-05T18:29:55.847Z",
+          "precio": 0,
+          "costo": "500000",
+          "maximo": 400000,
+          "minimo": 200000,
+          "fecha_vigencia_inicio": "2024-09-09T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-26T03:00:00.000Z"
+        }
+      ],
+      "archivos": [
+        {
+          "descripcion": "",
+          "nombre_original": "CLIENTE_CONTRATOS-REPORTE SGM 04-2024.xlsx",
+          "ubicacion": "CLIENTE/CONTRATO/YIiytu8jbOslf_Yc2h8tZ.xlsx",
+          "id": "q_dOqzc1CMVcI6GvAarQB"
+        }
+      ],
+      "cliente_banco": false,
+      "cliente_completo": false,
+      "productos": [
+        "CUSTODIA"
+      ],
+      "fecha_alta": "2024-09-05T18:06:19.626Z",
+      "fecha_modificacion": "2024-09-05T19:45:40.193Z",
+      "habilitado": true,
+      "datos_incompletos": [
+        "Correo"
+      ]
+    },
+    {
+      "id": "30715816789",
+      "nombre": "david prueba",
+      "cuenta": {
+        "caja_valores": "23626345",
+        "custodia_bony": "700670"
+      },
+      "numero_documento": [
+        {
+          "tipo": "CUIT",
+          "valor": "30715816789"
+        }
+      ],
+      "direccion": {
+        "piso": "",
+        "codigo_postal": "5409",
+        "oficina": "",
+        "numero": "67",
+        "calle": "lisandro",
+        "departamento": "",
+        "localidad": "ADAN QUIROGA (ESTACION FCGB)",
+        "provincia": "SAN JUAN",
+        "telefono": "",
+        "pais": "Argentina"
+      },
+      "emails": [
+        "prueba@gmail.com"
+      ],
+      "nombre_referente": "David",
+      "telefono": "32463423",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-09-03T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "346347",
+          "habilitado": true,
+          "jurisdiccion": "Misiones",
+          "nombre": "IVA",
+          "condicion": "4",
+          "fecha_hasta": "2024-09-14T03:00:00.000Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-09-03T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "262332",
+          "habilitado": true,
+          "jurisdiccion": "Corrientes",
+          "nombre": "IIBB",
+          "condicion": "7",
+          "fecha_hasta": "2024-09-13T03:00:00.000Z"
+        }
+      ],
+      "parametrias": [
+        {
+          "id": "e736a9e5-17c0-4f58-aa65-96d0a0cafde4",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 21,
+              "cuenta_contable": 28824442,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "8821212",
+            "fecha_alta": "2024-08-29T19:01:53.152Z",
+            "id_compuesto": "C-CUS-03",
+            "grupo": "COMISIONES",
+            "id": "e2ddc3b8-da5e-40da-995a-dae827e039c8",
+            "habilitado": true,
+            "nombre": "Comisiones de Custodia BP",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "MONTO_TOTAL_DEUDA",
+          "fecha_alta": "2024-09-18T14:37:50.662Z",
+          "precio": 0,
+          "costo": "50000",
+          "maximo": 20000,
+          "minimo": 4500000,
+          "fecha_vigencia_inicio": "2024-09-02T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-08T03:00:00.000Z"
+        },
+        {
+          "id": "0b088d1f-74a9-446e-96b4-79459aa4d770",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 0,
+              "cuenta_contable": 288383,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "7722238",
+            "fecha_alta": "2024-08-29T19:01:26.712Z",
+            "id_compuesto": "C-CUS-02",
+            "grupo": "COMISIONES",
+            "id": "a664fa1b-dddc-4b05-9eda-0227d7495ce5",
+            "habilitado": true,
+            "fecha_modificacion": "2024-09-03T17:27:00.251Z",
+            "nombre": "Transacciones de titulos",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "CANTIDAD_OPERACIONES",
+          "fecha_alta": "2024-09-18T14:38:25.374Z",
+          "precio": 0,
+          "costo": "60000",
+          "maximo": 30000,
+          "minimo": 20000,
+          "fecha_vigencia_inicio": "2024-09-06T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-10T03:00:00.000Z"
+        }
+      ],
+      "archivos": [
+        {
+          "descripcion": "",
+          "nombre_original": "CLIENTE_CONSTANCIA_CUIT-REPORTE SGM MARZO.xlsx",
+          "ubicacion": "CLIENTE/CONSTANCIA_CUIT/Qp2jzq7kpaddWFAEKTPv0.xlsx",
+          "id": "4xotUR04RkC_ofz6fnvIm"
+        }
+      ],
+      "cliente_banco": false,
+      "cliente_completo": true,
+      "productos": [
+        "CUSTODIA"
+      ],
+      "fecha_alta": "2024-09-05T16:29:29.050Z",
+      "fecha_modificacion": "2024-09-18T14:44:39.212Z",
+      "habilitado": true,
+      "datos_incompletos": []
+    },
+    {
+      "id": "30715815768",
+      "nombre": "Ricardo Dantes",
+      "cuenta": {
+        "caja_valores": "3464734",
+        "custodia_bony": "826244"
+      },
+      "numero_documento": [
+        {
+          "tipo": "CUIT",
+          "valor": "30715815768"
+        }
+      ],
+      "direccion": {
+        "piso": "",
+        "codigo_postal": "5419",
+        "oficina": "",
+        "numero": "34",
+        "calle": "lisandro",
+        "departamento": "",
+        "localidad": "ALBARDON",
+        "provincia": "SAN JUAN",
+        "telefono": "",
+        "pais": "Argentina"
+      },
+      "emails": [],
+      "nombre_referente": "Ricardo",
+      "telefono": "34562345",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-09-03T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "3634743",
+          "habilitado": true,
+          "jurisdiccion": "La Rioja",
+          "nombre": "IVA",
+          "condicion": "4",
+          "fecha_hasta": "2024-09-19T03:00:00.000Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-09-10T03:00:00.000Z",
+          "alicuota": "21",
+          "cuenta_contable": "432526",
+          "habilitado": true,
+          "jurisdiccion": "La Rioja",
+          "nombre": "IIBB",
+          "condicion": "4",
+          "fecha_hasta": "2024-09-18T03:00:00.000Z"
+        }
+      ],
+      "parametrias": [
+        {
+          "id": "63cc61f3-a7bb-4af2-b716-831c70f0c2de",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 0,
+              "cuenta_contable": 288383,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "7722238",
+            "fecha_alta": "2024-08-29T19:01:26.712Z",
+            "id_compuesto": "C-CUS-02",
+            "grupo": "COMISIONES",
+            "id": "a664fa1b-dddc-4b05-9eda-0227d7495ce5",
+            "habilitado": true,
+            "fecha_modificacion": "2024-09-03T17:27:00.251Z",
+            "nombre": "Transacciones de titulos",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "CANTIDAD_OPERACIONES",
+          "fecha_alta": "2024-09-05T16:01:29.925Z",
+          "precio": 0,
+          "costo": "4500",
+          "maximo": 2,
+          "minimo": 1,
+          "fecha_vigencia_inicio": "2024-09-05T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-19T03:00:00.000Z"
+        },
+        {
+          "id": "a235cd5d-3039-4dd1-8629-bd48baedcd3a",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 21,
+              "cuenta_contable": 832883123,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "82382832",
+            "fecha_alta": "2024-08-29T19:00:59.131Z",
+            "id_compuesto": "C-CUS-01",
+            "grupo": "COMISIONES",
+            "id": "fceb36e1-64ec-4971-b76c-0eaa3b215abf",
+            "habilitado": true,
+            "fecha_modificacion": "2024-08-29T20:56:54.489Z",
+            "nombre": "Tranferencias en efectivo",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "MONTO_TOTAL_DEUDA",
+          "fecha_alta": "2024-09-05T16:02:34.069Z",
+          "precio": 0,
+          "costo": "50000",
+          "maximo": 4,
+          "minimo": 2,
+          "fecha_vigencia_inicio": "2024-09-05T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-25T03:00:00.000Z"
+        },
+        {
+          "id": "8c34ff3b-56b9-4dbc-9814-35409d24d654",
+          "producto": "CUSTODIA",
+          "concepto": {
+            "impuesto": {
+              "alicuota": 21,
+              "cuenta_contable": 28824442,
+              "moneda": [
+                "USD"
+              ],
+              "nombre": "IVA"
+            },
+            "cuenta_contable": "8821212",
+            "fecha_alta": "2024-08-29T19:01:53.152Z",
+            "id_compuesto": "C-CUS-03",
+            "grupo": "COMISIONES",
+            "id": "e2ddc3b8-da5e-40da-995a-dae827e039c8",
+            "habilitado": true,
+            "nombre": "Comisiones de Custodia BP",
+            "productos": [
+              "CUSTODIA"
+            ]
+          },
+          "aplicacion": "TENENCIA_CLIENTE",
+          "fecha_alta": "2024-09-05T16:08:15.185Z",
+          "precio": 0,
+          "costo": "45000",
+          "maximo": 5000,
+          "minimo": 3000,
+          "fecha_vigencia_inicio": "2024-09-05T03:00:00.000Z",
+          "fecha_vigencia_fin": "2024-09-20T03:00:00.000Z"
+        }
+      ],
+      "archivos": [
+        {
+          "descripcion": "",
+          "nombre_original": "CLIENTE_CONSTANCIA_EXCEPCIONES-REPORTE SGM 04-2024.xlsx",
+          "ubicacion": "CLIENTE/CONSTANCIA_EXCEPCIONES/dmd1wMPitxdiRrwWiSOkr.xlsx",
+          "id": "fpoaXAmlzF-f3t4WrirtN"
+        }
+      ],
+      "cliente_banco": false,
+      "cliente_completo": false,
+      "productos": [
+        "CUSTODIA"
+      ],
+      "fecha_alta": "2024-09-05T15:59:16.868Z",
+      "fecha_modificacion": "2024-09-05T20:08:03.461Z",
+      "habilitado": true,
+      "datos_incompletos": [
+        "Correo"
+      ]
+    },
+    {
+      "id": "000030716181002",
+      "nombre": "DA VALORES SA",
+      "cuenta": {
+        "caja_valores": "660042710",
+        "custodia_bony": null
+      },
+      "numero_documento": [
+        {
+          "tipo": "CUIT",
+          "valor": "30716181002"
+        }
+      ],
+      "direccion": {
+        "codigo_postal": "01414",
+        "numero": "005637",
+        "calle": "AVDA CORDOBA",
+        "localidad": "CAPITAL FEDERAL",
+        "provincia": "CAPITAL FEDERAL",
+        "pais": "Argentina"
+      },
+      "emails": [],
+      "nombre_referente": "",
+      "telefono": "",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-08-19T17:01:38.715Z",
+          "alicuota": 21,
+          "jurisdiccion": "",
+          "nombre": "IVA",
+          "condicion": "RESP.INSCRIPTO+PERCEPCION     ",
+          "fecha_hasta": "2024-08-19T17:01:38.715Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-08-19T17:01:38.715Z",
+          "alicuota": 0,
+          "jurisdiccion": "",
+          "nombre": "IIBB",
+          "condicion": "INSCR CONV MULTILAT           ",
+          "fecha_hasta": "2024-08-19T17:01:38.715Z"
+        }
+      ],
+      "parametrias": [],
+      "archivos": [],
+      "cliente_banco": true,
+      "cliente_completo": false,
+      "productos": [],
+      "fecha_alta": "2024-08-19T17:01:38.715Z",
+      "habilitado": true,
+      "datos_incompletos": [
+        "Correo",
+        "Parametrias",
+        "Productos"
+      ]
+    },
+    {
+      "id": "000000000000437",
+      "nombre": "BCSA SD CMA PROTECCION FCI",
+      "cuenta": {
+        "caja_valores": "640006010",
+        "custodia_bony": null
+      },
+      "numero_documento": [
+        {
+          "tipo": "Código CNV",
+          "valor": "437"
+        }
+      ],
+      "direccion": {
+        "codigo_postal": "01036",
+        "numero": "000699",
+        "calle": "B MITRE",
+        "localidad": "CDAD AUT BS AS",
+        "provincia": "CAPITAL FEDERAL",
+        "pais": "Argentina"
+      },
+      "emails": [],
+      "nombre_referente": "",
+      "telefono": "",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-08-19T17:01:38.715Z",
+          "alicuota": 21,
+          "jurisdiccion": "",
+          "nombre": "IVA",
+          "condicion": "RESP.INSCRIPTO+PERCEPCION     ",
+          "fecha_hasta": "2024-08-19T17:01:38.715Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-08-19T17:01:38.715Z",
+          "alicuota": 0,
+          "jurisdiccion": "",
+          "nombre": "IIBB",
+          "condicion": "NO ALCANZADO                  ",
+          "fecha_hasta": "2024-08-19T17:01:38.715Z"
+        }
+      ],
+      "parametrias": [],
+      "archivos": [],
+      "cliente_banco": true,
+      "cliente_completo": false,
+      "productos": [],
+      "fecha_alta": "2024-08-19T17:01:38.715Z",
+      "habilitado": true,
+      "datos_incompletos": [
+        "Correo",
+        "Parametrias",
+        "Productos"
+      ]
+    },
+    {
+      "id": "000000000000682",
+      "nombre": "B MARIVA MAF RENTA FIJA COBERT",
+      "cuenta": {
+        "caja_valores": "640014210",
+        "custodia_bony": null
+      },
+      "numero_documento": [
+        {
+          "tipo": "Código CNV",
+          "valor": "682"
+        }
+      ],
+      "direccion": {
+        "codigo_postal": "01036",
+        "numero": "000699",
+        "calle": "B MITRE",
+        "localidad": "CDAD AUT BS AS",
+        "provincia": "CAPITAL FEDERAL",
+        "pais": "Argentina"
+      },
+      "emails": [],
+      "nombre_referente": "",
+      "telefono": "",
+      "idioma_factura": "ES",
+      "moneda": "ARS",
+      "tipo_cliente": "NACIONAL",
+      "impuestos": [
+        {
+          "fecha_desde": "2024-08-19T17:01:38.715Z",
+          "alicuota": 21,
+          "jurisdiccion": "",
+          "nombre": "IVA",
+          "condicion": "NO CATEGORIZADO               ",
+          "fecha_hasta": "2024-08-19T17:01:38.715Z"
+        }
+      ],
+      "percepciones": [
+        {
+          "fecha_desde": "2024-08-19T17:01:38.715Z",
+          "alicuota": 0,
+          "jurisdiccion": "",
+          "nombre": "IIBB",
+          "condicion": "NO ALCANZADO                  ",
+          "fecha_hasta": "2024-08-19T17:01:38.715Z"
+        }
+      ],
+      "parametrias": [],
+      "archivos": [],
+      "cliente_banco": true,
+      "cliente_completo": false,
+      "productos": [],
+      "fecha_alta": "2024-08-19T17:01:38.715Z",
+      "habilitado": true,
+      "datos_incompletos": [
+        "Correo",
+        "Parametrias",
+        "Productos"
+      ]
+    }
+  ],
+  "cantidad": 10
+}

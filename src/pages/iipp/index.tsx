@@ -9,11 +9,12 @@ import { FolderCogOutline } from 'mdi-material-ui'
 import { useRouter } from 'next/router'
 import HeaderComponent from 'src/@core/components/HeaderComponent'
 import Spinner from 'src/@core/components/spinner'
-import { useDispatch } from 'src/@core/configs/store'
+import { useDispatch, useSelector } from 'src/@core/configs/store'
 import { IIPP_ROUTE } from 'src/@core/constants'
 import { useAppContext } from 'src/@core/context/AppContext'
 import { AccionesEnum } from 'src/@core/enums'
 import { ElasticSearchDataIS, PaginationData, PaginationDataIS, QueryParams } from 'src/@core/types'
+import { showApiErrorMessage } from 'src/@core/utils'
 import ClientesView from 'src/bundle/iipp/components/ClientesView'
 import { useFetchClientesQuery } from 'src/bundle/iipp/data/clientesApiService'
 import { setClientesElasticSearch, setClientesList } from 'src/bundle/iipp/data/clientesStore'
@@ -35,6 +36,29 @@ function IippPage() {
     paginationData
   })
 
+  const {
+    CLIENTES: { clientesElasticSearch }
+  } = useSelector(state => state)
+
+  //** fetch to fake data */
+  useEffect(() => {
+    const response = fetch('/iipp/iipp.json')
+
+    setLoading(true)
+
+    response
+      .then(res => res.json())
+      .then(data => {
+        dispatch(setClientesElasticSearch(data))
+      })
+      .catch(err => {
+        showApiErrorMessage('Ha ocurrido un error')
+        console.log(err)
+      })
+      .finally(() => setLoading(false))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     setLoading(isLoading || isFetching || false)
   }, [setLoading, isLoading, isFetching])
@@ -42,7 +66,8 @@ function IippPage() {
   useEffect(() => {
     if (data) {
       dispatch(setClientesList(data.registros))
-      dispatch(setClientesElasticSearch(data))
+
+      // dispatch(setClientesElasticSearch(data))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
@@ -70,7 +95,7 @@ function IippPage() {
             }
           />
           <ClientesView
-            data={data || ElasticSearchDataIS}
+            data={clientesElasticSearch || ElasticSearchDataIS} // quitar clientesElasticSearch y agregar data
             isLoading={loading}
             isFetching={loading}
             isLoadingRefresh={loading}
