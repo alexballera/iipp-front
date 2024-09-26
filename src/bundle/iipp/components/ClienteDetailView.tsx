@@ -53,7 +53,6 @@ function ClienteDetailView() {
     router.push(`form/${AccionesEnum.EDITAR_CLIENTE}`)
   }, [router, setState, state])
 
-
   const menuItems: MenuItemsAccion[] = [
     {
       icon: <PencilOutline fontSize='small' color='success' sx={{ mr: 1 }} />,

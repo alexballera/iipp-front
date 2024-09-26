@@ -42,20 +42,24 @@ function IippPage() {
 
   //** fetch to fake data */
   useEffect(() => {
-    const response = fetch('/iipp/iipp.json')
+    if (clientesElasticSearch.registros.length === 0) {
+      setLoading(true)
 
-    setLoading(true)
+      const response = fetch('/iipp/iipp.json')
 
-    response
-      .then(res => res.json())
-      .then(data => {
-        dispatch(setClientesElasticSearch(data))
-      })
-      .catch(err => {
-        showApiErrorMessage('Ha ocurrido un error')
-        console.log(err)
-      })
-      .finally(() => setLoading(false))
+      console.log('aqui')
+
+      response
+        .then(res => res.json())
+        .then(data => {
+          dispatch(setClientesElasticSearch(data))
+        })
+        .catch(err => {
+          showApiErrorMessage('Ha ocurrido un error')
+          console.log(err)
+        })
+        .finally(() => setLoading(false))
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
