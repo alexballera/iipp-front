@@ -1,0 +1,846 @@
+{
+  "total": 268,
+  "registros": [
+    {
+      "id": "aa123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 1",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero": "987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "ba123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 2",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "ca123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 3",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "da123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 4",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "ea123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 5",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "fa123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 6",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "ga123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 7",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "ha123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 8",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "ia123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 9",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "ja123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 10",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "ka123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 11",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    },
+    {
+      "id": "la123456789",
+      "sociedad_gerente": "SOCIEDAD GERENTE MOCK",
+      "nombre_cliente": "Nombre del cliente MOCK 12",
+      "nombre_referente": "Nombre referente MOCK",
+      "emails": ["correo1@corr.co", "correo2@corr.co", "correo3@corr.co"],
+      "email": "",
+      "cuenta_cryl": "89656599",
+      "fecha_alta": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "fecha_modificacion": "Wed Oct 02 2024 15:03:03 GMT-0300 (hora estándar de Argentina)",
+      "documentos": [{"tipo": "DNI", "numero": "1234567890"}, {"tipo": "CUIL", "numero": "76568765"}, {"tipo": "PASAPORTE", "numero":"0987654321"}],
+      "cuenta": {
+        "tipo": "PESOS",
+        "cuenta_corriente": "1234565540",
+        "numero_cbu": "1234565540",
+        "numero_cuit_comafi": "1234565540"
+      },
+      "liquidacion_efectivo": [
+        {
+          "tipo": "DOLARES",
+          "cuenta_corriente": "1234565540",
+          "numero_cbu": "1234565540",
+          "numero_cuit_comafi": "1234565540",
+          "caja_ahorros": "1234565540",
+          "numero_cbu_caja_ahorros": "1234565540",
+          "numero_cuit_caja": "1234565540"
+        },
+        {
+          "tipo": "PESOS",
+          "cuenta_corriente": "234565540",
+          "numero_cbu": "234565540",
+          "numero_cuit_comafi": "234565540",
+          "caja_ahorros": "234565540",
+          "numero_cbu_caja_ahorros": "234565540",
+          "numero_cuit_caja": "234565540"
+        }
+      ],
+      "transaccion": {
+        "tipo": "RESCATES_DOLARES",
+        "numero_cuit_comafi": "9876788",
+        "nombre_fci": "nombre fci",
+        "caja_ahorros": "56565656",
+        "account_name": "234534534",
+        "account_number": "2342424",
+        "swift_code": "1232233",
+        "aba_number": "3243243234"
+      },
+      "transacciones_exterior_byma": [
+        {
+          "tipo": "RESCATES_DOLARES",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        },
+        {
+          "tipo": "TRASACCION_TITULOS",
+          "swift_code": "qwe323",
+          "aba_number": "aba123",
+          "account_number": "cuenta321",
+          "account_name": "cuenta nombre",
+          "caja_ahorros": "caja de ahorros",
+          "numero_cuit_comafi": "numero cuit comafi",
+          "nombre_fci": "nombre fci"
+        }
+      ]
+    }
+  ],
+  "cantidad": 10
+}
